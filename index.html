@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hair Salon in Williamsville, NY | Duality Salon</title>
+<meta name="description" content="Duality Salon is a Williamsville, NY hair salon for expert color, balayage, precision cuts and bridal styling from a mother-daughter team. Book online.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="fonts/f3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/local.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23161412'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' fill='%23F8F4EE' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#161412;
+    --ink-2:#221F1C;
+    --ink-3:#2E2A26;
+    --ivory:#F8F4EE;
+    --sand:#EFE8DE;
+    --white:#FFFFFF;
+    --line:#E3DACD;
+    --line-dark:rgba(255,255,255,.14);
+    --stone:#72695F;
+    --stone-2:#A39A8F;
+    --brass:#8C6D43;
+    --brass-lt:#C9AF86;
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --sans:'Jost','Segoe UI',Arial,sans-serif;
+    --wrap:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);font-family:var(--sans);font-weight:400;color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{width:min(var(--wrap),100% - 48px);margin:0 auto;}
+
+  /* ---------- shared ---------- */
+  .eyebrow{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);display:flex;align-items:center;gap:16px;}
+  .eyebrow::before{content:"";width:36px;height:1px;background:currentColor;}
+  .eyebrow.center{justify-content:center;}
+  .eyebrow.center::after{content:"";width:36px;height:1px;background:currentColor;}
+  .on-dark .eyebrow{color:var(--brass-lt);}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.005em;}
+  h2{font-size:clamp(38px,4.6vw,58px);margin-top:18px;}
+  h2 em,h1 em{font-style:italic;font-weight:400;}
+  .sub{color:var(--stone);font-size:18px;max-width:620px;margin-top:18px;}
+  .on-dark .sub{color:#bdb4a8;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.2em;text-transform:uppercase;padding:18px 34px;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:background .25s,color .25s,border-color .25s;white-space:nowrap;}
+  .btn:hover{background:var(--brass);border-color:var(--brass);}
+  .btn.light{background:var(--ivory);color:var(--ink);border-color:var(--ivory);}
+  .btn.light:hover{background:var(--brass-lt);border-color:var(--brass-lt);}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink);color:#fff;}
+  .btn.ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.5);}
+  .btn.ghost-light:hover{background:#fff;color:var(--ink);border-color:#fff;}
+  .btn .arr{font-size:16px;letter-spacing:0;}
+  .section{padding:120px 0;}
+  .note{font-size:12.5px;color:var(--stone-2);letter-spacing:.02em;font-style:italic;}
+  .emblem{display:block;}
+  section[id]{scroll-margin-top:92px;}
+
+  /* ---------- review ribbon ---------- */
+  .ribbon{background:var(--brass);color:#fff;text-align:center;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--ink);color:#bdb4a8;font-size:13.5px;letter-spacing:.02em;}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:44px;gap:20px;}
+  .topbar b{color:#fff;font-weight:500;}
+  .topbar .sep{color:var(--brass-lt);margin:0 12px;}
+  .topbar .right{display:flex;gap:26px;align-items:center;}
+  .topbar .right a:hover{color:#fff;}
+
+  /* ---------- nav ---------- */
+  .nav{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:92px;gap:24px;}
+  .brand{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+  .brand .word{line-height:1;}
+  .brand .word b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;letter-spacing:.2em;}
+  .brand .word span{display:block;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--stone);margin-top:6px;}
+  .nav .links{display:flex;gap:34px;font-size:13.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+  .nav .links a{position:relative;padding:6px 0;}
+  .nav .links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--brass);transition:right .3s;}
+  .nav .links a:hover::after,.nav .links a.active::after{right:0;}
+  .nav .cta{display:flex;align-items:center;gap:22px;flex-shrink:0;}
+  .nav .phone{text-align:right;line-height:1.2;white-space:nowrap;}
+  .nav .phone small{display:block;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone);}
+  .nav .phone b{font-family:var(--serif);font-weight:600;font-size:22px;}
+  .nav .btn{padding:15px 26px;}
+  .burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:none;align-items:center;justify-content:center;cursor:pointer;}
+  .burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.5px;background:var(--ink);position:relative;}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0;}
+  .burger span::before{top:-6px;} .burger span::after{top:6px;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:760px;background:var(--ink);}
+  .hero .copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:90px 72px 170px max(24px,calc((100vw - var(--wrap))/2));color:#fff;}
+  .hero .copy::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(transparent,rgba(201,175,134,.5),transparent);}
+  .hero h1{font-size:clamp(46px,5.4vw,80px);margin:26px 0 0;}
+  .hero h1 em{color:var(--brass-lt);}
+  .hero .lede{font-family:var(--serif);font-style:italic;font-size:26px;color:#e9e1d6;margin-top:26px;line-height:1.35;}
+  .hero p.body{color:#bdb4a8;font-size:17.5px;max-width:520px;margin-top:16px;}
+  .hero .actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+  .hero .photo{position:relative;overflow:hidden;}
+  .hero .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;}
+  .hero .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,20,18,.35),transparent 30%);z-index:1;}
+  .hero .seal{position:absolute;right:40px;top:40px;z-index:2;width:128px;height:128px;border-radius:50%;background:rgba(248,244,238,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,0,0,.25);}
+  .hero .trust{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:40px;margin-top:54px;padding-top:28px;border-top:1px solid var(--line-dark);}
+  .hero .trust div{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#bdb4a8;}
+  .hero .trust b{display:block;font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:0;text-transform:none;color:#fff;line-height:1.1;}
+
+  /* ---------- booking bar ---------- */
+  .book-bar{position:relative;z-index:5;margin-top:-92px;}
+  .book-bar .card{background:var(--white);box-shadow:0 24px 60px rgba(22,20,18,.16);display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr auto;align-items:stretch;}
+  .book-bar .intro{background:var(--ivory);padding:30px 34px;border-right:1px solid var(--line);}
+  .book-bar .intro b{display:block;font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1;}
+  .book-bar .intro span{font-size:13.5px;color:var(--stone);}
+  .book-bar .field{padding:30px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;}
+  .book-bar .field label{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--stone);}
+  .book-bar .field .val{display:flex;justify-content:space-between;align-items:center;font-family:var(--serif);font-size:22px;font-weight:500;margin-top:6px;}
+  .book-bar .field .val i{font-style:normal;font-family:var(--sans);font-size:13px;color:var(--brass);}
+  .book-bar .go{display:flex;align-items:stretch;}
+  .book-bar .go .btn{height:100%;padding:0 42px;}
+
+  /* ---------- intro / about ---------- */
+  .about{background:var(--white);}
+  .about .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:110px;align-items:center;}
+  .about .frame{position:relative;padding:0 40px 40px 0;}
+  .about .frame::before{content:"";position:absolute;right:0;bottom:0;width:78%;height:82%;border:1px solid var(--brass-lt);}
+  .about .frame img{position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;}
+  .about .badge{position:absolute;z-index:2;left:-34px;bottom:80px;background:var(--ink);color:#fff;padding:26px 30px;max-width:240px;}
+  .about .badge b{display:block;font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;}
+  .about .badge span{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#bdb4a8;margin-top:8px;}
+  .about blockquote{font-family:var(--serif);font-style:italic;font-size:27px;line-height:1.4;color:var(--ink);border-left:1px solid var(--brass);padding-left:28px;margin:34px 0 0;}
+  .about p{color:var(--stone);margin-top:22px;}
+  .about .points{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;margin:36px 0 42px;}
+  .about .points div{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;}
+  .about .points svg{flex-shrink:0;margin-top:3px;}
+
+  /* ---------- services ---------- */
+  .services{background:var(--ivory);}
+  .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);background:var(--white);}
+  .svc{padding:44px 34px 38px;border-right:1px solid var(--line);display:flex;flex-direction:column;transition:background .3s;}
+  .svc:last-child{border-right:0;}
+  .svc:hover{background:var(--sand);}
+  .svc .num{font-family:var(--serif);font-size:15px;color:var(--brass);letter-spacing:.1em;}
+  .svc .ico{width:64px;height:64px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:26px 0 26px;}
+  .svc h3{font-size:32px;}
+  .svc p{color:var(--stone);font-size:15.5px;margin-top:12px;flex:1;}
+  .svc ul{list-style:none;margin-top:24px;border-top:1px solid var(--line);}
+  .svc li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:11px 0;border-bottom:1px dotted var(--line);}
+  .svc li b{font-weight:500;white-space:nowrap;}
+  .svc .more{margin-top:26px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:inline-flex;gap:10px;}
+  .svc .more:hover{color:var(--brass);}
+
+  /* ---------- price menu ---------- */
+  .menu{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+  .menu .ghost-d{position:absolute;right:-120px;top:50%;transform:translateY(-50%);opacity:.05;pointer-events:none;}
+  .menu .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-top:64px;position:relative;}
+  .menu h3{font-size:30px;padding-bottom:16px;border-bottom:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:baseline;}
+  .menu h3 small{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt);font-weight:500;}
+  .menu .block+.block{margin-top:48px;}
+  .menu .row{display:flex;align-items:baseline;gap:10px;padding:13px 0;font-size:15.5px;color:#e9e1d6;}
+  .menu .row .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.22);transform:translateY(-4px);}
+  .menu .row b{font-family:var(--serif);font-weight:500;font-size:20px;color:#fff;white-space:nowrap;}
+  .menu .row b.c{font-family:var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-lt);font-weight:400;}
+  .menu .foot{margin-top:60px;padding-top:30px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;position:relative;}
+  .menu .foot p{color:#bdb4a8;font-size:15px;max-width:640px;}
+
+  /* ---------- team ---------- */
+  .team .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;margin-top:64px;}
+  .member .pic{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--sand);}
+  .member .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;transition:transform .6s;}
+  .member:hover .pic img{transform:scale(1.04);}
+  .member .pic .tag{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px;}
+  .member .pic.soon{background:var(--ink-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#bdb4a8;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;}
+  .member h3{font-size:28px;margin-top:20px;}
+  .member .role{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:6px;}
+  .member p{font-size:14.5px;color:var(--stone);margin-top:12px;line-height:1.6;}
+  .team .mother{margin-top:70px;display:grid;grid-template-columns:1.2fr 1fr;background:var(--ivory);}
+  .team .mother img{width:100%;height:100%;object-fit:cover;max-height:520px;object-position:50% 45%;}
+  .team .mother .txt{padding:64px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .team .mother h3{font-size:42px;margin-top:16px;}
+  .team .mother p{color:var(--stone);margin-top:18px;}
+
+  /* ---------- education ---------- */
+  .edu{position:relative;color:#fff;min-height:560px;display:flex;align-items:center;overflow:hidden;}
+  .edu img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;}
+  .edu::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,20,18,.92) 0%,rgba(22,20,18,.78) 42%,rgba(22,20,18,.15) 80%);z-index:1;}
+  .edu .wrap{position:relative;z-index:2;}
+  .edu .txt{max-width:560px;}
+  .edu .facts{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap;}
+  .edu .facts div{border-left:1px solid var(--brass-lt);padding-left:18px;font-size:14px;color:#bdb4a8;max-width:210px;}
+  .edu .facts b{display:block;font-family:var(--serif);font-weight:500;font-size:24px;color:#fff;line-height:1.2;}
+
+  /* ---------- visit steps ---------- */
+  .steps{background:var(--white);}
+  .steps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:70px;position:relative;}
+  .steps .grid::before{content:"";position:absolute;top:34px;left:6%;right:6%;height:1px;background:var(--line);}
+  .step{position:relative;}
+  .step .chip{width:68px;height:68px;border-radius:50%;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .step .n{font-family:var(--serif);font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--brass-lt);position:absolute;right:0;top:0;background:var(--white);padding-left:14px;z-index:1;}
+  .step h3{font-size:28px;margin-top:28px;}
+  .step p{color:var(--stone);font-size:15.5px;margin-top:10px;}
+
+  /* ---------- reviews ---------- */
+  .reviews{background:var(--sand);}
+  .reviews .rating{display:flex;align-items:center;gap:18px;}
+  .reviews .rating .stars{color:var(--brass);letter-spacing:4px;font-size:20px;}
+  .reviews .rating b{font-family:var(--serif);font-size:40px;font-weight:500;}
+  .reviews .rating span{font-size:13.5px;color:var(--stone);line-height:1.35;}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px;}
+  .rev{background:var(--white);padding:44px 38px 36px;display:flex;flex-direction:column;position:relative;}
+  .rev .q{font-family:var(--serif);font-size:90px;line-height:.6;color:var(--brass-lt);height:40px;}
+  .rev p{font-family:var(--serif);font-size:23px;line-height:1.45;flex:1;margin-top:14px;}
+  .rev .who{display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;letter-spacing:.16em;text-transform:uppercase;}
+  .rev .who span{color:var(--stone);}
+  .rev .who .stars{color:var(--brass);letter-spacing:3px;}
+
+  /* ---------- area / map ---------- */
+  .area .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:stretch;}
+  .area .cities{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:40px;border-top:1px solid var(--line);}
+  .area .city{padding:20px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;}
+  .area .city:nth-child(odd){padding-right:20px;border-right:1px solid var(--line);}
+  .area .city:nth-child(even){padding-left:24px;}
+  .area .city b{display:block;font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.1;}
+  .area .city small{display:block;font-size:12px;color:var(--stone);letter-spacing:.04em;}
+  .area .city:hover b{color:var(--brass);}
+  .area .mapbox{position:relative;min-height:560px;background:var(--sand);border:1px solid var(--line);}
+  .area .mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05) brightness(1.02);}
+  .area .mapcard{position:absolute;z-index:2;left:24px;bottom:24px;background:var(--white);padding:26px 28px;box-shadow:0 18px 40px rgba(22,20,18,.18);max-width:320px;}
+  .area .mapcard b{font-family:var(--serif);font-size:24px;font-weight:500;display:block;line-height:1.15;}
+  .area .mapcard p{font-size:14.5px;color:var(--stone);margin:8px 0 14px;}
+  .area .mapcard a{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--brass);}
+
+  /* ---------- gallery strip ---------- */
+  .strip{background:var(--white);padding-bottom:120px;}
+  .strip .row{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:14px;margin-top:50px;}
+  .strip .row img{width:100%;height:380px;object-fit:cover;}
+  .strip .row a{position:relative;overflow:hidden;display:block;}
+  .strip .row a img{transition:transform .6s;}
+  .strip .row a:hover img{transform:scale(1.04);}
+
+  /* ---------- faq ---------- */
+  .faq{background:var(--ivory);}
+  .faq .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;}
+  .faq details{border-bottom:1px solid var(--line);}
+  .faq details:first-child{border-top:1px solid var(--line);}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;font-family:var(--serif);font-size:25px;font-weight:500;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";font-family:var(--sans);font-weight:300;font-size:28px;color:var(--brass);transition:transform .3s;}
+  .faq details[open] summary::after{transform:rotate(45deg);}
+  .faq details p{color:var(--stone);padding:0 60px 28px 0;}
+
+  /* ---------- cta band ---------- */
+  .cta-band{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden;}
+  .cta-band .split{position:absolute;inset:0;background:linear-gradient(115deg,transparent 50%,rgba(255,255,255,.03) 50%);}
+  .cta-band .wrap{position:relative;}
+  .cta-band h2{font-size:clamp(42px,5.4vw,72px);}
+  .cta-band .sub{margin:22px auto 0;}
+  .cta-band .actions{display:flex;justify-content:center;gap:16px;margin-top:44px;flex-wrap:wrap;}
+
+  /* ---------- contact ---------- */
+  .contact .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
+  .contact .info{margin-top:36px;}
+  .contact .info .it{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);}
+  .contact .info .it:first-child{border-top:1px solid var(--line);}
+  .contact .info .ic{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact .info small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone);}
+  .contact .info b{display:block;font-family:var(--serif);font-size:23px;font-weight:500;line-height:1.3;margin-top:2px;}
+  .hours{width:100%;border-collapse:collapse;margin-top:4px;font-size:15px;}
+  .hours td{padding:5px 0;}
+  .hours td:last-child{text-align:right;}
+  .hours tr.closed td{color:var(--stone-2);}
+  .form{background:var(--ivory);padding:52px 50px;border-top:3px solid var(--ink);}
+  .form h3{font-size:36px;}
+  .form p.lead{color:var(--stone);font-size:15.5px;margin-top:8px;}
+  .form .fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;}
+  .form .f{display:flex;flex-direction:column;gap:7px;}
+  .form .f.full{grid-column:1/-1;}
+  .form label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);}
+  .form input,.form select,.form textarea{font:inherit;font-size:15.5px;padding:15px 16px;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:0;appearance:none;}
+  .form textarea{min-height:110px;resize:vertical;}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--brass);}
+  .form .btn{width:100%;margin-top:22px;}
+  .form .fine{font-size:12.5px;color:var(--stone);margin-top:14px;text-align:center;}
+
+  /* ---------- footer ---------- */
+  .footer{background:var(--ink);color:#bdb4a8;padding:90px 0 0;font-size:15px;}
+  .footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;}
+  .footer .brand .word b{color:#fff;}
+  .footer .brand .word span{color:#8f867b;}
+  .footer p{margin-top:22px;max-width:320px;}
+  .footer h4{font-family:var(--sans);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:22px;}
+  .footer ul{list-style:none;}
+  .footer li{padding:5px 0;}
+  .footer a:hover{color:#fff;}
+  .footer .social{display:flex;gap:12px;margin-top:26px;}
+  .footer .social a{width:42px;height:42px;border:1px solid var(--line-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .footer .social a:hover{border-color:var(--brass-lt);}
+  .footer .bottom{margin-top:80px;border-top:1px solid var(--line-dark);padding:26px 0;display:flex;justify-content:space-between;font-size:13px;color:#8f867b;gap:20px;flex-wrap:wrap;}
+
+  /* ---------- mobile sticky bar ---------- */
+  .mbar{display:none;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1180px){
+    .nav .links{gap:22px;font-size:12.5px;}
+    .nav .phone{display:none;}
+    .hero .copy{padding-left:40px;padding-right:48px;}
+    .book-bar .card{grid-template-columns:1fr 1fr 1fr;}
+    .book-bar .intro{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line);}
+    .book-bar .go{grid-column:1/-1;}
+    .book-bar .go .btn{width:100%;padding:22px;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .svc:nth-child(2){border-right:0;}
+    .svc:nth-child(-n+2){border-bottom:1px solid var(--line);}
+    .team .grid{grid-template-columns:repeat(3,1fr);}
+    .menu .cols{grid-template-columns:1fr 1fr;}
+    .about .grid,.area .grid,.faq .grid,.contact .grid{gap:56px;}
+    .footer .grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:900px){
+    body{font-size:16px;}
+    .section{padding:84px 0;}
+    .topbar .left{display:none;}
+    .topbar .wrap{justify-content:center;}
+    .nav .wrap{height:76px;}
+    .nav .links,.nav .cta .btn{display:none;}
+    .burger{display:flex;}
+    .nav.open .links{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:var(--white);border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(22,20,18,.12);padding:8px 24px 20px;font-size:14px;}
+    .nav.open .links a{padding:16px 0;border-bottom:1px solid var(--line);}
+    .nav.open .links a::after{display:none;}
+    .brand .word b{font-size:24px;}
+    .brand svg{width:46px;height:46px;}
+    .hero{grid-template-columns:1fr;min-height:0;}
+    .hero .photo{order:-1;height:62vw;max-height:520px;}
+    .hero .photo::before{background:linear-gradient(0deg,rgba(22,20,18,.55),transparent 40%);}
+    .hero .seal{width:92px;height:92px;right:18px;top:18px;}
+    .hero .seal svg{width:74px;height:74px;}
+    .hero .copy{padding:48px 24px 140px;}
+    .hero .copy::after{display:none;}
+    .hero .lede{font-size:22px;}
+    .hero .trust{gap:24px;margin-top:40px;}
+    .hero .trust b{font-size:28px;}
+    .book-bar{margin-top:-100px;}
+    .book-bar .card{grid-template-columns:1fr;}
+    .book-bar .field{border-right:0;border-bottom:1px solid var(--line);padding:18px 24px;}
+    .book-bar .intro{padding:24px;}
+    .about .grid,.area .grid,.faq .grid,.contact .grid{grid-template-columns:1fr;}
+    .about .frame{padding:0 20px 20px 0;max-width:520px;}
+    .about .badge{left:-8px;bottom:40px;padding:18px 22px;}
+    .about .badge b{font-size:34px;}
+    .about blockquote{font-size:23px;}
+    .about .points{grid-template-columns:1fr;}
+    .head-row{flex-direction:column;align-items:flex-start;margin-bottom:44px;gap:24px;}
+    .svc-grid{grid-template-columns:1fr;}
+    .svc{border-right:0;border-bottom:1px solid var(--line);}
+    .svc:last-child{border-bottom:0;}
+    .menu .cols{grid-template-columns:1fr;gap:48px;}
+    .team .grid{grid-template-columns:1fr 1fr;gap:28px 18px;}
+    .member h3{font-size:24px;}
+    .team .mother{grid-template-columns:1fr;}
+    .team .mother .txt{padding:40px 28px;}
+    .team .mother h3{font-size:34px;}
+    .edu{min-height:0;padding:90px 0;}
+    .edu::before{background:rgba(22,20,18,.8);}
+    .steps .grid{grid-template-columns:1fr 1fr;gap:44px 28px;}
+    .steps .grid::before{display:none;}
+    .rev-grid{grid-template-columns:1fr;}
+    .rev p{font-size:21px;}
+    .area .mapbox{min-height:420px;}
+    .strip .row{grid-template-columns:1fr 1fr;}
+    .strip .row img{height:220px;}
+    .faq summary{font-size:21px;}
+    .faq details p{padding-right:0;}
+    .form{padding:36px 24px;}
+    .form .fields{grid-template-columns:1fr;}
+    .footer .grid{grid-template-columns:1fr;gap:40px;}
+    .footer{padding-bottom:70px;}
+    .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -6px 24px rgba(0,0,0,.18);}
+    .mbar a{display:flex;align-items:center;justify-content:center;gap:10px;padding:17px 10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;}
+    .mbar .call{background:var(--ivory);color:var(--ink);}
+    .mbar .book{background:var(--ink);color:#fff;}
+  }
+  @media (max-width:520px){
+    .team .grid{grid-template-columns:1fr 1fr;}
+    .steps .grid{grid-template-columns:1fr;}
+    .area .cities{grid-template-columns:1fr;}
+    .area .city:nth-child(odd){border-right:0;padding-right:0;}
+    .area .city:nth-child(even){padding-left:0;}
+    .ribbon{font-size:10.5px;letter-spacing:.1em;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable brand emblem, redrawn from the salon's reception-desk sign. Final build uses the client's vector logo file. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="arcTop" d="M 22,60 A 38,38 0 0 1 98,60"/>
+    <path id="arcBot" d="M 20,60 A 40,40 0 0 0 100,60"/>
+  </defs>
+  <symbol id="emblem" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <circle cx="60" cy="60" r="49.5" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <text font-family="Jost,Arial,sans-serif" font-size="10.5" font-weight="500" letter-spacing="3.2" fill="currentColor"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">DUALITY</textPath></text>
+    <text font-family="Jost,Arial,sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.6" fill="currentColor" dy="7"><textPath href="#arcBot" startOffset="50%" text-anchor="middle" side="right">EST. 2020</textPath></text>
+    <text x="60" y="80" font-family="'Cormorant Garamond',Georgia,serif" font-size="56" font-weight="500" text-anchor="middle" fill="currentColor">D</text>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#8C6D43" stroke-width="1"/><path d="M6.5 11.3l3 3 6-6.3" fill="none" stroke="#8C6D43" stroke-width="1.3"/></symbol>
+</svg>
+
+<div class="ribbon">Homepage design concept &nbsp;·&nbsp; Prepared for Duality Salon review</div>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="left">1606 Hopkins Road, <b>Williamsville, NY 14221</b><span class="sep">|</span>Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</div>
+    <div class="right">
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/DualitySalonBuffalo" target="_blank" rel="noopener">Facebook</a>
+      <a href="tel:+17169988528"><b>(716) 998-8528</b></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="brand" aria-label="Duality Salon home">
+      <svg width="58" height="58" class="emblem" style="color:var(--ink)"><use href="#emblem"/></svg>
+      <span class="word"><b>DUALITY</b><span>Salon · Williamsville</span></span>
+    </a>
+    <nav class="links">
+      <a href="#services" class="active">Services</a>
+      <a href="#menu">Price Menu</a>
+      <a href="#team">Our Team</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="cta">
+      <a href="tel:+17169988528" class="phone"><small>Call the salon</small><b>(716) 998-8528</b></a>
+      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn">Book Online</a>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero on-dark">
+  <div class="copy">
+    <div class="eyebrow">Color · Style · Self-Care</div>
+    <h1>Hair Color &amp; Styling Salon in <em>Williamsville, NY</em></h1>
+    <p class="lede">Perfect color. Precision styling. Personalized service.</p>
+    <p class="body">A mother-daughter salon on Hopkins Road where we never overbook, so every appointment gets our full, undivided attention.</p>
+    <div class="actions">
+      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn light">Book Your Appointment <span class="arr">→</span></a>
+      <a href="tel:+17169988528" class="btn ghost-light">Call (716) 998-8528</a>
+    </div>
+    <div class="trust">
+      <div><b>100+</b>Years combined experience</div>
+      <div><b>5</b>Stylists, one team</div>
+      <div><b>2020</b>Serving Williamsville since</div>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="img/group-1.jpg" alt="The Duality Salon stylist team in their Williamsville, NY salon" fetchpriority="high">
+    <div class="seal"><svg width="100" height="100" style="color:var(--ink)"><use href="#emblem"/></svg></div>
+  </div>
+</section>
+
+<!-- ============ BOOKING BAR ============ -->
+<div class="book-bar">
+  <div class="wrap">
+    <div class="card">
+      <div class="intro"><b>Book your chair.</b><span>Real-time availability through our online booking.</span></div>
+      <a class="field" href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener"><label>Service</label><span class="val">Color or Cut <i>▾</i></span></a>
+      <a class="field" href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener"><label>Stylist</label><span class="val">Any stylist <i>▾</i></span></a>
+      <a class="field" href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener"><label>Day</label><span class="val">Wed – Sat <i>▾</i></span></a>
+      <div class="go"><a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn">Check Availability <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about section">
+  <div class="wrap grid">
+    <div class="frame">
+      <img src="img/sue-leah.jpg" alt="Mother-daughter owners Sue and Leah at Duality Salon in Williamsville" loading="lazy">
+      <div class="badge"><b>Mother &amp; Daughter</b><span>Two generations behind the chair</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">Welcome to Duality</div>
+      <h2>Every great style begins with a <em>thoughtful conversation.</em></h2>
+      <blockquote>“Beautiful style is achieved through mastery of contrasting elements: dark and light, wavy and straight, dynamic and still.”</blockquote>
+      <p>Duality Salon was built by mother and daughter Sue and Leah on one simple idea: salon time is your time. Between them they bring more than 50 years in the industry, and a team of stylists who share the same care and precision. We take the time to understand your hair, your routine and the look you have in mind, then we make it happen.</p>
+      <div class="points">
+        <div><svg width="22" height="22"><use href="#i-check"/></svg>We never overbook your appointment</div>
+        <div><svg width="22" height="22"><use href="#i-check"/></svg>Custom color designed for you</div>
+        <div><svg width="22" height="22"><use href="#i-check"/></svg>Ongoing education for every stylist</div>
+        <div><svg width="22" height="22"><use href="#i-check"/></svg>At-home care plan with every visit</div>
+      </div>
+      <a href="#team" class="btn ghost">Meet the Team <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services section" id="services">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Our Services</div>
+        <h2>Hair services in <em>Williamsville</em></h2>
+      </div>
+      <p class="sub" style="margin-top:0;max-width:460px">From lived-in balayage to a bridal updo, every service starts with a consultation so the result fits you, not a template.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <span class="num">01</span>
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M7 25c3-1 5-3 6-6l7-12a2.5 2.5 0 014.3 2.5l-7 12c-1.7 3-4.3 4.3-7.5 4.5z"/><path d="M13 19l4 2.3"/><path d="M5 28h9"/></svg></div>
+        <h3>Hair Color</h3>
+        <p>Balayage, highlights, grey coverage and vivid fashion color, custom mixed for your tone.</p>
+        <ul><li>Balayage<b>$100 +</b></li><li>Color Retouch<b>$62 +</b></li><li>Complete Highlight<b>$90</b></li></ul>
+        <a href="#" class="more">Hair Color in Williamsville →</a>
+      </div>
+      <div class="svc">
+        <span class="num">02</span>
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><circle cx="8" cy="24" r="3.5"/><circle cx="17" cy="26" r="3.5"/><path d="M10.5 21.5L25 5M14.8 23.4L18 8"/></svg></div>
+        <h3>Haircuts</h3>
+        <p>Precision cuts and polished blowouts for every hair type and texture, including natural curls.</p>
+        <ul><li>Haircut + Blow Dry<b>$52 +</b></li><li>Short Clipper Cut<b>$32 +</b></li><li>Kid's Cut (under 12)<b>$26 +</b></li></ul>
+        <a href="#" class="more">Haircuts in Williamsville →</a>
+      </div>
+      <div class="svc">
+        <span class="num">03</span>
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M16 4l3.2 7.4 8 .7-6 5.3 1.8 7.9L16 21.2l-7 4.1 1.8-7.9-6-5.3 8-.7z"/></svg></div>
+        <h3>Red Carpet Style</h3>
+        <p>Bridal, prom and special-occasion styling that photographs beautifully and lasts all night.</p>
+        <ul><li>Bridal<b>$75 +</b></li><li>Formal Styles<b>$60 +</b></li><li>Shampoo + Blow Dry<b>$32 +</b></li></ul>
+        <a href="#" class="more">Bridal Hair in Williamsville →</a>
+      </div>
+      <div class="svc">
+        <span class="num">04</span>
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M9 4c-2 6 2 10 0 16s2 8 2 8M15 4c-2 6 2 10 0 16s2 8 2 8M21 4c-2 6 2 10 0 16s2 8 2 8"/><path d="M6 4h20"/></svg></div>
+        <h3>Extensions</h3>
+        <p>Added length and fullness, color-matched and blended so they look like your own hair.</p>
+        <ul><li>Hair Extensions<b>Consultation</b></li><li>Conditioning Treatment<b>$15</b></li><li>Toner<b>$20</b></li></ul>
+        <a href="#" class="more">Hair Extensions in Williamsville →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE MENU ============ -->
+<section class="menu section on-dark" id="menu">
+  <svg class="ghost-d" width="640" height="640" style="color:#fff"><use href="#emblem"/></svg>
+  <div class="wrap">
+    <div class="eyebrow center">The Menu</div>
+    <h2 style="text-align:center">Clear pricing, <em>no surprises</em></h2>
+    <p class="sub" style="margin:18px auto 0;text-align:center">Prices are starting points. Your stylist will confirm the final price during your consultation, based on hair length, thickness and the look you want.</p>
+    <div class="cols">
+      <div>
+        <div class="block">
+          <h3>Color <small>Custom</small></h3>
+          <div class="row">Balayage<span class="dots"></span><b>$100 +</b></div>
+          <div class="row">Complete Highlight<span class="dots"></span><b>$90</b></div>
+          <div class="row">Face Framing Highlight<span class="dots"></span><b>$65</b></div>
+          <div class="row">Color Retouch<span class="dots"></span><b>$62 +</b></div>
+          <div class="row">Root and Scoot<span class="dots"></span><b>$35 +</b></div>
+          <div class="row">Toner<span class="dots"></span><b>$20</b></div>
+          <div class="row">Fashion Color<span class="dots"></span><b class="c">Consultation</b></div>
+        </div>
+      </div>
+      <div>
+        <div class="block">
+          <h3>Cuts <small>Precision</small></h3>
+          <div class="row">Haircut + Blow Dry<span class="dots"></span><b>$52 +</b></div>
+          <div class="row">Short Clipper Cut<span class="dots"></span><b>$32 +</b></div>
+          <div class="row">Kid's Cut (under 12)<span class="dots"></span><b>$26 +</b></div>
+        </div>
+        <div class="block">
+          <h3>Shampoo + Style <small>Finish</small></h3>
+          <div class="row">Shampoo + Blow Dry<span class="dots"></span><b>$32 +</b></div>
+          <div class="row">Heat Styling Only<span class="dots"></span><b>$15 +</b></div>
+          <div class="row">Conditioning Treatment<span class="dots"></span><b>$15</b></div>
+        </div>
+      </div>
+      <div>
+        <div class="block">
+          <h3>Red Carpet <small>Occasion</small></h3>
+          <div class="row">Bridal<span class="dots"></span><b>$75 +</b></div>
+          <div class="row">Formal Styles<span class="dots"></span><b>$60 +</b></div>
+          <div class="row">Extensions<span class="dots"></span><b class="c">Consultation</b></div>
+        </div>
+        <div class="block">
+          <h3>Extras <small>Add-on</small></h3>
+          <div class="row">Brow Tinting<span class="dots"></span><b>$15</b></div>
+          <div class="row">Waxing, per facial area<span class="dots"></span><b>$15</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <p>Not sure what to book? Call the salon and we will point you to the right service and stylist.</p>
+      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn light">Book Online <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team section" id="team">
+  <div class="wrap">
+    <div class="head-row" style="margin-bottom:0">
+      <div>
+        <div class="eyebrow">Our Stylists</div>
+        <h2>Meet the <em>Duality</em> team</h2>
+      </div>
+      <p class="sub" style="margin-top:0;max-width:460px">Five stylists with more than 100 years of combined experience, and one shared habit: they never stop learning.</p>
+    </div>
+    <div class="grid">
+      <div class="member">
+        <div class="pic"><img src="img/sue.jpg" alt="Sue Dicky, stylist at Duality Salon" loading="lazy"><span class="tag">40 years</span></div>
+        <h3>Sue Dicky</h3>
+        <div class="role">Artistic Director</div>
+        <p>A former L'ANZA educator who trained stylists up and down the East Coast. Sue loves mentoring the team and the long-time clients she has cared for over the years.</p>
+      </div>
+      <div class="member">
+        <div class="pic"><img src="img/leah.jpg" alt="Leah Blachaniec, owner of Duality Salon" loading="lazy"><span class="tag">Since 2013</span></div>
+        <h3>Leah Blachaniec</h3>
+        <div class="role">Owner &amp; Stylist</div>
+        <p>The daughter of a lifelong stylist, Leah turned her passion for hair into salon ownership. She leads the team with continued education and room to create.</p>
+      </div>
+      <div class="member">
+        <div class="pic"><img src="img/amanda.jpg" alt="Amanda Pohlman, stylist at Duality Salon" loading="lazy"><span class="tag">20 years</span></div>
+        <h3>Amanda Pohlman</h3>
+        <div class="role">Stylist</div>
+        <p>Known for polished blowouts that show off her color and cutting work. Amanda followed her dream into hair in her 30s and has never stopped refining her craft.</p>
+      </div>
+      <div class="member">
+        <div class="pic soon"><svg width="96" height="96" style="color:var(--brass-lt)"><use href="#emblem"/></svg>Photo coming soon</div>
+        <h3>Darcy Ragione</h3>
+        <div class="role">Stylist</div>
+        <p>Inspired by watching her grandma give perms, Darcy has spent almost 30 years creating custom cuts and styles that are unique to each client.</p>
+      </div>
+      <div class="member">
+        <div class="pic"><img src="img/marianna.jpg" alt="Marianna Campione, curly hair and vivid color stylist at Duality Salon" loading="lazy"><span class="tag">Curls &amp; vivids</span></div>
+        <h3>Marianna Campione</h3>
+        <div class="role">Stylist</div>
+        <p>A curly girl herself, Marianna helps clients embrace their natural curls, and loves vivid color and one-of-a-kind looks.</p>
+      </div>
+    </div>
+
+    <div class="mother">
+      <img src="img/group-2.jpg" alt="Duality Salon stylists at the reception desk in Williamsville" loading="lazy">
+      <div class="txt">
+        <div class="eyebrow">Salon time is your time</div>
+        <h3>We never overbook. <em>Ever.</em></h3>
+        <p>Your appointment is yours alone. No double-booking, no rushing you out of the chair. Just a stylist who listens, a result you love, and a plan to keep it looking great at home.</p>
+        <div style="margin-top:30px"><a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn">Book with a Stylist <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="edu on-dark">
+  <img src="img/education.jpg" alt="Duality Salon stylists attending an in-salon education class" loading="lazy">
+  <div class="wrap">
+    <div class="txt">
+      <div class="eyebrow">Always Learning</div>
+      <h2>Education is part of <em>everything we do</em></h2>
+      <p class="sub">Duality hosts hands-on classes right here in the salon. Our stylists train together on the newest color and cutting techniques, then bring that inspiration straight back to your chair.</p>
+      <div class="facts">
+        <div><b>In-salon classes</b>Hosted at Duality for the whole team</div>
+        <div><b>L'ANZA roots</b>Sue spent years as a L'ANZA educator</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section class="steps section">
+  <div class="wrap">
+    <div class="eyebrow center">Your Visit</div>
+    <h2 style="text-align:center">What to expect <em>at Duality</em></h2>
+    <div class="grid">
+      <div class="step">
+        <div class="chip"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="#161412" stroke-width="1.2"><rect x="4" y="6" width="20" height="18"/><path d="M4 11h20M9 3v6M19 3v6"/></svg></div>
+        <span class="n">01</span>
+        <h3>Book your time</h3>
+        <p>Book online in a minute, or call the salon at (716) 998-8528.</p>
+      </div>
+      <div class="step">
+        <div class="chip"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="#161412" stroke-width="1.2"><path d="M5 6h18v12H12l-5 4v-4H5z"/></svg></div>
+        <span class="n">02</span>
+        <h3>Consultation</h3>
+        <p>We talk through your hair, your routine and the look you have in mind.</p>
+      </div>
+      <div class="step">
+        <div class="chip"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="#161412" stroke-width="1.2"><circle cx="8" cy="21" r="3"/><circle cx="16" cy="23" r="3"/><path d="M10 19L22 5M14.4 20.6L17 7"/></svg></div>
+        <span class="n">03</span>
+        <h3>Your service</h3>
+        <p>Full, undivided attention from your stylist. Never rushed, never overbooked.</p>
+      </div>
+      <div class="step">
+        <div class="chip"><svg width="26" height="26" viewBox="0 0 28 28" fill="none" stroke="#161412" stroke-width="1.2"><path d="M11 4h6v4l2 3v13H9V11l2-3z"/><path d="M9 15h10"/></svg></div>
+        <span class="n">04</span>
+        <h3>At-home care</h3>
+        <p>Leave with product advice and a simple plan to keep your color and style fresh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews section">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Client Love</div>
+        <h2>What our clients <em>have to say</em></h2>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Duality+Salon+1606+Hopkins+Rd+Williamsville+NY" target="_blank" rel="noopener" class="btn ghost">Read Our Google Reviews <span class="arr">→</span></a>
+    </div>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="q">“</div>
+        <p>I had highlights and lowlights applied to my hair. I am overwhelmed with the beautiful results. My hair has so much shine and dimension. Sue is definitely a hair artist!</p>
+        <div class="who"><div><b>Gale</b> <span>· Williamsville</span></div><span class="stars">★★★★★</span></div>
+      </div>
+      <div class="rev">
+        <div class="q">“</div>
+        <p>The hair extensions that Sue installed are beautiful. She did an amazing job.</p>
+        <div class="who"><div><b>Paula</b> <span>· Williamsville</span></div><span class="stars">★★★★★</span></div>
+      </div>
+      <div class="rev">
+        <div class="q">“</div>
+        <p>I told Leah “Do what you want with this mess and have fun with it.” She did a wonderful job and did not disappoint.</p>
+        <div class="who"><div><b>Kristy</b> <span>· Tonawanda</span></div><span class="stars">★★★★★</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:22px">Testimonials from the current website. At launch this section can pull in live Google reviews.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="area section">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Find Us</div>
+      <h2>Your neighborhood salon in <em>Williamsville</em></h2>
+      <p class="sub">On Hopkins Road with easy access from across Amherst and the Northtowns. Clients visit us from all over the Buffalo area.</p>
+      <div class="cities">
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>Williamsville</b><small>Hair Salon in Williamsville</small></span></a>
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>Amherst</b><small>Hair Salon in Amherst</small></span></a>
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>East Amherst</b><small>Hair Salon in East Amherst</small></span></a>
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>Clarence</b><small>Hair Salon in Clarence</small></span></a>
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>Getzville</b><small>Hair Salon in Getzville</small></span></a>
+        <a href="#" class="city"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#8C6D43" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg><span><b>Tonawanda</b><small>Hair Salon in Tonawanda</small></span></a>
+      </div>
+      <p class="note" style="margin-top:18px">Service-area towns shown for layout. Final list to be confirmed with the salon.</p>
+    </div>
+    <div class="mapbox">
+      <iframe title="Map to Duality Salon, 1606 Hopkins Road, Williamsville NY" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Duality+Salon,+1606+Hopkins+Rd,+Williamsville,+NY+14221&z=13&output=embed"></iframe>
+      <div class="mapcard">
+        <b>Duality Salon</b>
+        <p>1606 Hopkins Road<br>Williamsville, NY 14221</p>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=1606+Hopkins+Rd+Williamsville+NY+14221" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY STRIP ============ -->
+<section class="strip" id="gallery">
+  <div class="wrap">
+    <div class="head-row" style="margin-bottom:0">
+      <div>
+        <div class="eyebrow">@dualitysalonbuffalo</div>
+        <h2>Inside <em>the salon</em></h2>
+      </div>
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener" class="btn ghost">Follow on Instagram <span class="arr">→</span></a>
+    </div>
+    <div class="row">
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener"><img src="img/marianna-2.jpg" alt="Curly hair styling at Duality Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener"><img src="img/amanda.jpg" alt="Stylist Amanda at her station" loading="lazy" style="object-position:50% 20%"></a>
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener"><img src="img/leah.jpg" alt="Leah at her styling chair" loading="lazy" style="object-position:50% 40%"></a>
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener"><img src="img/group-3.jpg" alt="Inside Duality Salon in Williamsville, NY" loading="lazy"></a>
+    </div>
+    <p class="note" style="margin-top:16px">At launch this strip can show the latest hair color and style work from Instagram.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq section">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Questions</div>
+      <h2>Good to <em>know</em></h2>
+      <p class="sub">Can't find your answer? Call the salon at <a href="tel:+17169988528" style="color:var(--ink);border-bottom:1px solid var(--brass)">(716) 998-8528</a>.</p>
+      <p class="note" style="margin-top:20px">Draft answers based on the current website. To be confirmed by the salon.</p>
+    </div>
+    <div>
+      <details open>
+        <summary>How do I book an appointment?</summary>
+        <p>Book online any time through our booking page, or call the salon at (716) 998-8528. Online booking shows real-time availability for every stylist.</p>
+      </details>
+      <details>
+        <summary>How much does a haircut cost?</summary>
+        <p>A haircut with blow dry starts at $52. Short clipper cuts start at $32 and kids' cuts (under 12) start at $26. Your stylist confirms the final price at your consultation.</p>
+      </details>
+      <details>
+        <summary>Do I need a consultation for balayage, fashion color or extensions?</summary>
+        <p>Fashion color and extensions are priced at a consultation so we can plan the right color, length and budget with you. Balayage starts at $100.</p>
+      </details>
+      <details>
+        <summary>Do you do bridal and prom hair?</summary>
+        <p>Yes. Our Red Carpet Style services cover bridal styling (from $75) and formal styles for prom and special occasions (from $60).</p>
+      </details>
+      <details>
+        <summary>Do you work with curly hair?</summary>
+        <p>Yes. Marianna is a curly girl herself and loves helping clients embrace their natural curls. Our whole team keeps learning about every hair type and texture.</p>
+      </details>
+      <details>
+        <summary>What are your hours?</summary>
+        <p>Wednesday and Thursday 10 AM to 8 PM, Friday 9 AM to 5 PM, and Saturday 9 AM to 3 PM. We are closed Sunday, Monday and Tuesday.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band section on-dark">
+  <div class="split"></div>
+  <div class="wrap">
+    <div class="eyebrow center">Your Chair Is Waiting</div>
+    <h2>Ready for hair you <em>love?</em></h2>
+    <p class="sub">Book online in a minute, or give us a call. We would love to meet you.</p>
+    <div class="actions">
+      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn light">Book Online <span class="arr">→</span></a>
+      <a href="tel:+17169988528" class="btn ghost-light">Call (716) 998-8528</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact section" id="contact">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Visit Us</div>
+      <h2>Contact <em>Duality Salon</em></h2>
+      <div class="info">
+        <div class="it">
+          <span class="ic"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="#161412" stroke-width="1.2"><path d="M9 21s7-7 7-12A7 7 0 002 9c0 5 7 12 7 12z"/><circle cx="9" cy="9" r="2.5"/></svg></span>
+          <div><small>Address</small><b>1606 Hopkins Road<br>Williamsville, NY 14221</b></div>
+        </div>
+        <div class="it">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="#161412" stroke-width="1.2"><path d="M5 2h4l2 5-2.5 1.5a11 11 0 005 5L15 11l5 2v4a2 2 0 01-2 2A16 16 0 013 4a2 2 0 012-2z"/></svg></span>
+          <div><small>Phone</small><b><a href="tel:+17169988528">(716) 998-8528</a></b></div>
+        </div>
+        <div class="it">
+          <span class="ic"><svg width="20" height="16" viewBox="0 0 22 16" fill="none" stroke="#161412" stroke-width="1.2"><rect x="1" y="1" width="20" height="14"/><path d="M1 1l10 8 10-8"/></svg></span>
+          <div><small>Email</small><b><a href="mailto:info@dualitysalonbuffalo.com">info@dualitysalonbuffalo.com</a></b></div>
+        </div>
+        <div class="it">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="#161412" stroke-width="1.2"><circle cx="11" cy="11" r="9.5"/><path d="M11 5v6l4 2.5"/></svg></span>
+          <div style="flex:1"><small>Hours</small>
+            <table class="hours">
+              <tr class="closed"><td>Monday – Tuesday</td><td>Closed</td></tr>
+              <tr><td>Wednesday – Thursday</td><td>10 AM – 8 PM</td></tr>
+              <tr><td>Friday</td><td>9 AM – 5 PM</td></tr>
+              <tr><td>Saturday</td><td>9 AM – 3 PM</td></tr>
+              <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('.fine').textContent='Demo form only. On the live site this sends to the salon inbox.';">
+      <h3>Send us a message</h3>
+      <p class="lead">Questions about a service, extensions or a bridal party? We will get back to you within one business day.</p>
+      <div class="fields">
+        <div class="f"><label for="n">Name</label><input id="n" type="text" placeholder="Your name"></div>
+        <div class="f"><label for="p">Phone</label><input id="p" type="tel" placeholder="(716) 000-0000"></div>
+        <div class="f full"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+        <div class="f full"><label for="s">I'm interested in</label>
+          <select id="s"><option>Hair Color / Balayage</option><option>Haircut</option><option>Bridal / Red Carpet Style</option><option>Hair Extensions</option><option>Something else</option></select></div>
+        <div class="f full"><label for="m">Message</label><textarea id="m" placeholder="Tell us a little about your hair and what you're looking for"></textarea></div>
+      </div>
+      <button class="btn" type="submit">Send Message <span class="arr">→</span></button>
+      <p class="fine">Prefer to book now? <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" style="color:var(--brass);font-weight:500">Book online</a></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a href="#" class="brand">
+          <svg width="58" height="58" style="color:#F8F4EE"><use href="#emblem"/></svg>
+          <span class="word"><b>DUALITY</b><span>Salon · Williamsville</span></span>
+        </a>
+        <p>Hair color, cuts and Red Carpet styling from a mother-daughter team in Williamsville, NY. Color · Style · Self-Care.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9AF86" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#C9AF86"/></svg></a>
+          <a href="https://www.facebook.com/DualitySalonBuffalo" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9AF86" stroke-width="1.4"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="#services">Hair Color &amp; Balayage</a></li><li><a href="#services">Haircuts</a></li><li><a href="#services">Bridal &amp; Formal Styles</a></li><li><a href="#services">Hair Extensions</a></li><li><a href="#menu">Price Menu</a></li></ul>
+      </div>
+      <div>
+        <h4>Salon</h4>
+        <ul><li><a href="#team">Our Team</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#">Blog</a></li><li><a href="#contact">Contact</a></li><li><a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener">Book Online</a></li></ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul><li>1606 Hopkins Road</li><li>Williamsville, NY 14221</li><li><a href="tel:+17169988528">(716) 998-8528</a></li><li>Wed–Thu 10–8</li><li>Fri 9–5 · Sat 9–3</li></ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Duality Salon Inc. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<div class="mbar">
+  <a href="tel:+17169988528" class="call">Call</a>
+  <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="book">Book Online</a>
+</div>
+
+<script>
+  (function(){
+    var nav=document.querySelector('.nav');
+    document.querySelector('.burger').addEventListener('click',function(){nav.classList.toggle('open');});
+    nav.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
+  })();
+</script>
+</body>
+</html>
