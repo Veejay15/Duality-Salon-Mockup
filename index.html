@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preload" href="fonts/f3.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/local.css">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23161412'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' fill='%23F8F4EE' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 <style>
   :root{
@@ -139,33 +140,99 @@
   /* ---------- services ---------- */
   .services{background:var(--ivory);}
   .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;}
-  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);background:var(--white);}
-  .svc{padding:44px 34px 38px;border-right:1px solid var(--line);display:flex;flex-direction:column;transition:background .3s;}
-  .svc:last-child{border-right:0;}
-  .svc:hover{background:var(--sand);}
-  .svc .num{font-family:var(--serif);font-size:15px;color:var(--brass);letter-spacing:.1em;}
-  .svc .ico{width:64px;height:64px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:26px 0 26px;}
-  .svc h3{font-size:32px;}
-  .svc p{color:var(--stone);font-size:15.5px;margin-top:12px;flex:1;}
-  .svc ul{list-style:none;margin-top:24px;border-top:1px solid var(--line);}
-  .svc li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:11px 0;border-bottom:1px dotted var(--line);}
-  .svc li b{font-weight:500;white-space:nowrap;}
-  .svc .more{margin-top:26px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:inline-flex;gap:10px;}
-  .svc .more:hover{color:var(--brass);}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .svc{position:relative;overflow:hidden;background:var(--white);border:1px solid var(--line);padding:46px 34px 40px;display:flex;flex-direction:column;transition:background .5s,color .5s,transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s;}
+  .svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--brass),var(--brass-lt));transition:width .6s cubic-bezier(.2,.7,.2,1);}
+  .svc .ghost-n{position:absolute;right:22px;top:14px;font-family:var(--serif);font-size:108px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);transition:-webkit-text-stroke-color .5s,transform .6s;pointer-events:none;font-variant-numeric:lining-nums;}
+  .svc .ico{position:relative;width:118px;height:118px;display:flex;align-items:center;justify-content:center;margin-bottom:34px;}
+  .svc .ico .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line);transition:border-color .5s,transform .8s;}
+  .svc .ico .ring.dash{inset:-9px;border:1px dashed var(--brass-lt);opacity:.55;}
+  .svc .ico svg{position:relative;width:78px;height:78px;stroke:var(--ink);transition:stroke .5s,transform .6s cubic-bezier(.2,.7,.2,1);}
+  .svc .ico svg .acc{stroke:var(--brass);}
+  .svc h3{font-size:31px;white-space:nowrap;transition:color .5s;}
+  .svc p{color:var(--stone);font-size:15.5px;margin-top:12px;flex:1;transition:color .5s;}
+  .svc .from{display:flex;align-items:baseline;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);transition:border-color .5s;}
+  .svc .from small{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--stone);transition:color .5s;}
+  .svc .from b{font-family:var(--serif);font-weight:500;font-size:40px;line-height:1;font-variant-numeric:lining-nums;}
+  .svc .from b.sm{font-size:28px;font-style:italic;}
+  .svc ul{list-style:none;margin-top:18px;}
+  .svc li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:8px 0;color:var(--stone);transition:color .5s;}
+  .svc li b{font-weight:500;white-space:nowrap;color:var(--ink);transition:color .5s;}
+  .svc .more{margin-top:26px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:12px;}
+  .svc .more .ln{display:inline-block;width:28px;height:1px;background:currentColor;transition:width .4s;}
+  .svc:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-10px);box-shadow:0 34px 60px rgba(22,20,18,.28);}
+  .svc:hover::before{width:100%;}
+  .svc:hover .ghost-n{-webkit-text-stroke-color:rgba(201,175,134,.35);transform:translateY(6px);}
+  .svc:hover .ico .ring{border-color:rgba(201,175,134,.45);}
+  .svc:hover .ico .ring.dash{transform:rotate(90deg);}
+  .svc:hover .ico svg{stroke:var(--ivory);transform:scale(1.08);}
+  .svc:hover .ico svg .acc{stroke:var(--brass-lt);}
+  .svc:hover p,.svc:hover li,.svc:hover .from small{color:#bdb4a8;}
+  .svc:hover li b{color:#fff;}
+  .svc:hover .from{border-color:var(--line-dark);}
+  .svc:hover .more{color:var(--brass-lt);}
+  .svc:hover .more .ln{width:46px;}
+  /* line-art draw-on when a card scrolls into view */
+  .js .svc .ico svg path,.js .svc .ico svg circle,.js .svc .ico svg line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s cubic-bezier(.6,.1,.2,1),stroke .5s;}
+  .js .svc.in .ico svg path,.js .svc.in .ico svg circle,.js .svc.in .ico svg line{stroke-dashoffset:0;}
+  .svc-foot{display:flex;justify-content:center;gap:34px;margin-top:46px;flex-wrap:wrap;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);}
+  .svc-foot span{display:flex;align-items:center;gap:12px;}
+  .svc-foot span::before{content:"";width:6px;height:6px;transform:rotate(45deg);background:var(--brass);}
 
   /* ---------- price menu ---------- */
   .menu{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
-  .menu .ghost-d{position:absolute;right:-120px;top:50%;transform:translateY(-50%);opacity:.05;pointer-events:none;}
-  .menu .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-top:64px;position:relative;}
-  .menu h3{font-size:30px;padding-bottom:16px;border-bottom:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:baseline;}
-  .menu h3 small{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt);font-weight:500;}
-  .menu .block+.block{margin-top:48px;}
-  .menu .row{display:flex;align-items:baseline;gap:10px;padding:13px 0;font-size:15.5px;color:#e9e1d6;}
-  .menu .row .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.22);transform:translateY(-4px);}
-  .menu .row b{font-family:var(--serif);font-weight:500;font-size:20px;color:#fff;white-space:nowrap;}
-  .menu .row b.c{font-family:var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-lt);font-weight:400;}
-  .menu .foot{margin-top:60px;padding-top:30px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;position:relative;}
-  .menu .foot p{color:#bdb4a8;font-size:15px;max-width:640px;}
+  .menu .ghost-d{position:absolute;right:-160px;top:-120px;opacity:.04;pointer-events:none;}
+  .menu .layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:80px;align-items:stretch;position:relative;}
+  .menu .visual{position:relative;min-height:640px;}
+  .menu .visual .img{position:absolute;inset:0 0 0 0;overflow:hidden;}
+  .menu .visual img{width:100%;height:100%;object-fit:cover;object-position:30% 50%;transform:scale(1.06);transition:transform 1.6s cubic-bezier(.2,.7,.2,1);}
+  .menu .visual.in img{transform:scale(1);}
+  .menu .visual::before{content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid rgba(201,175,134,.45);}
+  .menu .visual .cap{position:absolute;left:-1px;bottom:44px;z-index:2;background:var(--ivory);color:var(--ink);padding:26px 30px 24px;max-width:300px;}
+  .menu .visual .cap small{display:block;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);}
+  .menu .visual .cap b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15;margin-top:8px;}
+  .menu .visual .cap a{display:inline-block;margin-top:12px;font-size:13.5px;border-bottom:1px solid var(--brass);}
+  .menu .lead-in{color:#bdb4a8;font-size:16.5px;max-width:560px;margin-top:18px;}
+  .tabs{display:flex;gap:0;margin-top:38px;border-bottom:1px solid var(--line-dark);overflow-x:auto;scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{position:relative;background:none;border:0;color:#8f867b;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:18px 24px 20px 0;margin-right:10px;cursor:pointer;white-space:nowrap;transition:color .3s;}
+  .tab i{font-style:normal;font-family:var(--serif);font-size:15px;letter-spacing:.05em;color:var(--brass-lt);margin-right:8px;opacity:.6;}
+  .tab::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--brass-lt);transition:width .45s cubic-bezier(.2,.7,.2,1);}
+  .tab:hover{color:#e9e1d6;}
+  .tab.on{color:#fff;}
+  .tab.on i{opacity:1;}
+  .tab.on::after{width:calc(100% - 24px);}
+  .panel{display:none;padding-top:14px;}
+  .panel.on{display:block;animation:panelIn .6s cubic-bezier(.2,.7,.2,1);}
+  @keyframes panelIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  .item{display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:padding .35s,background .35s;}
+  .item:hover{padding-left:14px;background:linear-gradient(90deg,rgba(201,175,134,.07),transparent 70%);}
+  .item .nm{font-family:var(--serif);font-size:25px;font-weight:500;line-height:1.2;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .item .nm em{font-style:normal;font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);background:var(--brass-lt);padding:4px 9px 3px;}
+  .item .nm,.item .ds{grid-column:1;}
+  .item .pr{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:right;font-family:var(--sans);font-weight:300;font-size:30px;letter-spacing:.01em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;}
+  .item .pr sup{font-size:.5em;vertical-align:top;position:relative;top:.3em;margin-right:2px;color:var(--brass-lt);font-weight:400;}
+  .item .pr small{font-size:13px;color:var(--brass-lt);margin-left:4px;font-weight:400;}
+  .item .pr.c{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-lt);font-weight:500;border:1px solid rgba(201,175,134,.45);padding:9px 14px;}
+  .item .ds{color:#9d9489;font-size:14.5px;}
+  .menu .foot{margin-top:34px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .menu .foot p{color:#8f867b;font-size:13.5px;max-width:420px;}
+
+  /* ---------- scroll reveal ---------- */
+  .js .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);}
+  .js .reveal.in{opacity:1;transform:none;}
+  .js .svc.reveal.in:hover{transform:translateY(-10px);}
+  .d1{transition-delay:.12s !important;} .d2{transition-delay:.24s !important;} .d3{transition-delay:.36s !important;}
+  .hero .photo img{animation:heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both;}
+  @keyframes heroZoom{from{transform:scale(1.08);}to{transform:scale(1);}}
+  .hero .copy > *{animation:heroUp 1s cubic-bezier(.2,.7,.2,1) both;}
+  .hero .copy > *:nth-child(2){animation-delay:.12s;} .hero .copy > *:nth-child(3){animation-delay:.24s;} .hero .copy > *:nth-child(4){animation-delay:.34s;} .hero .copy > *:nth-child(5){animation-delay:.44s;} .hero .copy > *:nth-child(6){animation-delay:.54s;}
+  @keyframes heroUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+    .js .reveal{opacity:1;transform:none;}
+    .js .svc .ico svg path,.js .svc .ico svg circle,.js .svc .ico svg line{stroke-dashoffset:0;}
+  }
 
   /* ---------- team ---------- */
   .team .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;margin-top:64px;}
@@ -313,10 +380,8 @@
     .book-bar .go{grid-column:1/-1;}
     .book-bar .go .btn{width:100%;padding:22px;}
     .svc-grid{grid-template-columns:1fr 1fr;}
-    .svc:nth-child(2){border-right:0;}
-    .svc:nth-child(-n+2){border-bottom:1px solid var(--line);}
     .team .grid{grid-template-columns:repeat(3,1fr);}
-    .menu .cols{grid-template-columns:1fr 1fr;}
+    .menu .layout{gap:56px;grid-template-columns:.7fr 1.3fr;}
     .about .grid,.area .grid,.faq .grid,.contact .grid{gap:56px;}
     .footer .grid{grid-template-columns:1fr 1fr;}
   }
@@ -354,10 +419,20 @@
     .about blockquote{font-size:23px;}
     .about .points{grid-template-columns:1fr;}
     .head-row{flex-direction:column;align-items:flex-start;margin-bottom:44px;gap:24px;}
-    .svc-grid{grid-template-columns:1fr;}
-    .svc{border-right:0;border-bottom:1px solid var(--line);}
-    .svc:last-child{border-bottom:0;}
-    .menu .cols{grid-template-columns:1fr;gap:48px;}
+    .svc-grid{grid-template-columns:1fr;gap:16px;}
+    .svc{padding:36px 26px 32px;}
+    .svc .ico{width:96px;height:96px;margin-bottom:26px;}
+    .svc .ico svg{width:64px;height:64px;}
+    .svc .ghost-n{font-size:84px;}
+    .svc:hover{transform:none;}
+    .menu .layout{grid-template-columns:1fr;gap:56px;}
+    .menu .visual{min-height:380px;margin-right:22px;}
+    .menu .visual .cap{bottom:24px;padding:20px 22px;max-width:260px;}
+    .menu .visual .cap b{font-size:22px;}
+    .tab{padding-right:18px;font-size:11.5px;}
+    .item .nm{font-size:21px;}
+    .item .pr{font-size:24px;}
+    .item .ds{font-size:13.5px;}
     .team .grid{grid-template-columns:1fr 1fr;gap:28px 18px;}
     .member h3{font-size:24px;}
     .team .mother{grid-template-columns:1fr;}
@@ -509,7 +584,7 @@
 <!-- ============ SERVICES ============ -->
 <section class="services section" id="services">
   <div class="wrap">
-    <div class="head-row">
+    <div class="head-row reveal">
       <div>
         <div class="eyebrow">Our Services</div>
         <h2>Hair services in <em>Williamsville</em></h2>
@@ -517,93 +592,132 @@
       <p class="sub" style="margin-top:0;max-width:460px">From lived-in balayage to a bridal updo, every service starts with a consultation so the result fits you, not a template.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc">
-        <span class="num">01</span>
-        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M7 25c3-1 5-3 6-6l7-12a2.5 2.5 0 014.3 2.5l-7 12c-1.7 3-4.3 4.3-7.5 4.5z"/><path d="M13 19l4 2.3"/><path d="M5 28h9"/></svg></div>
+      <div class="svc reveal">
+        <span class="ghost-n">01</span>
+        <div class="ico"><span class="ring dash"></span><span class="ring"></span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="26" r="13" pathLength="1"/>
+            <circle cx="40" cy="26" r="13" pathLength="1"/>
+            <circle cx="32" cy="39" r="13" class="acc" pathLength="1"/>
+            <path d="M32 55c0 3 2 5 2 5" class="acc" pathLength="1"/>
+          </svg>
+        </div>
         <h3>Hair Color</h3>
         <p>Balayage, highlights, grey coverage and vivid fashion color, custom mixed for your tone.</p>
-        <ul><li>Balayage<b>$100 +</b></li><li>Color Retouch<b>$62 +</b></li><li>Complete Highlight<b>$90</b></li></ul>
-        <a href="#" class="more">Hair Color in Williamsville →</a>
+        <div class="from"><small>Starting at</small><b>$35</b></div>
+        <ul><li>Balayage<b>$100 +</b></li><li>Complete Highlight<b>$90</b></li><li>Color Retouch<b>$62 +</b></li></ul>
+        <a href="#menu" class="more">Hair Color in Williamsville <span class="ln"></span></a>
       </div>
-      <div class="svc">
-        <span class="num">02</span>
-        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><circle cx="8" cy="24" r="3.5"/><circle cx="17" cy="26" r="3.5"/><path d="M10.5 21.5L25 5M14.8 23.4L18 8"/></svg></div>
+      <div class="svc reveal d1">
+        <span class="ghost-n">02</span>
+        <div class="ico"><span class="ring dash"></span><span class="ring"></span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="48" r="7" pathLength="1"/>
+            <circle cx="44" cy="48" r="7" pathLength="1"/>
+            <path d="M24.5 42.5L45 8" pathLength="1"/>
+            <path d="M39.5 42.5L19 8" pathLength="1"/>
+            <circle cx="32" cy="29" r="1.8" class="acc" pathLength="1"/>
+          </svg>
+        </div>
         <h3>Haircuts</h3>
         <p>Precision cuts and polished blowouts for every hair type and texture, including natural curls.</p>
+        <div class="from"><small>Starting at</small><b>$26</b></div>
         <ul><li>Haircut + Blow Dry<b>$52 +</b></li><li>Short Clipper Cut<b>$32 +</b></li><li>Kid's Cut (under 12)<b>$26 +</b></li></ul>
-        <a href="#" class="more">Haircuts in Williamsville →</a>
+        <a href="#menu" class="more">Haircuts in Williamsville <span class="ln"></span></a>
       </div>
-      <div class="svc">
-        <span class="num">03</span>
-        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M16 4l3.2 7.4 8 .7-6 5.3 1.8 7.9L16 21.2l-7 4.1 1.8-7.9-6-5.3 8-.7z"/></svg></div>
+      <div class="svc reveal d2">
+        <span class="ghost-n">03</span>
+        <div class="ico"><span class="ring dash"></span><span class="ring"></span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 16h24l10 12-22 26L10 28z" pathLength="1"/>
+            <path d="M10 28h44M26 16l-4 12 10 26 10-26-4-12" pathLength="1"/>
+            <path d="M54 6v8M50 10h8M9 8v6M6 11h6" class="acc" pathLength="1"/>
+          </svg>
+        </div>
         <h3>Red Carpet Style</h3>
         <p>Bridal, prom and special-occasion styling that photographs beautifully and lasts all night.</p>
+        <div class="from"><small>Starting at</small><b>$60</b></div>
         <ul><li>Bridal<b>$75 +</b></li><li>Formal Styles<b>$60 +</b></li><li>Shampoo + Blow Dry<b>$32 +</b></li></ul>
-        <a href="#" class="more">Bridal Hair in Williamsville →</a>
+        <a href="#menu" class="more">Bridal Hair in Williamsville <span class="ln"></span></a>
       </div>
-      <div class="svc">
-        <span class="num">04</span>
-        <div class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#161412" stroke-width="1.2"><path d="M9 4c-2 6 2 10 0 16s2 8 2 8M15 4c-2 6 2 10 0 16s2 8 2 8M21 4c-2 6 2 10 0 16s2 8 2 8"/><path d="M6 4h20"/></svg></div>
+      <div class="svc reveal d3">
+        <span class="ghost-n">04</span>
+        <div class="ico"><span class="ring dash"></span><span class="ring"></span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8h32v7H16z" class="acc" pathLength="1"/>
+            <path d="M21 15c-4 9 5 14 1 23s4 13 0 21" pathLength="1"/>
+            <path d="M32 15c-4 9 5 14 1 23s4 13 0 21" pathLength="1"/>
+            <path d="M43 15c-4 9 5 14 1 23s4 13 0 21" pathLength="1"/>
+          </svg>
+        </div>
         <h3>Extensions</h3>
         <p>Added length and fullness, color-matched and blended so they look like your own hair.</p>
-        <ul><li>Hair Extensions<b>Consultation</b></li><li>Conditioning Treatment<b>$15</b></li><li>Toner<b>$20</b></li></ul>
-        <a href="#" class="more">Hair Extensions in Williamsville →</a>
+        <div class="from"><small>Priced at</small><b class="sm">Consultation</b></div>
+        <ul><li>Hair Extensions<b>Consult</b></li><li>Conditioning Treatment<b>$15</b></li><li>Toner<b>$20</b></li></ul>
+        <a href="#menu" class="more">Hair Extensions in Williamsville <span class="ln"></span></a>
       </div>
+    </div>
+    <div class="svc-foot reveal">
+      <span>Consultation with every visit</span><span>Never overbooked</span><span>Online booking 24/7</span>
     </div>
   </div>
 </section>
 
 <!-- ============ PRICE MENU ============ -->
 <section class="menu section on-dark" id="menu">
-  <svg class="ghost-d" width="640" height="640" style="color:#fff"><use href="#emblem"/></svg>
-  <div class="wrap">
-    <div class="eyebrow center">The Menu</div>
-    <h2 style="text-align:center">Clear pricing, <em>no surprises</em></h2>
-    <p class="sub" style="margin:18px auto 0;text-align:center">Prices are starting points. Your stylist will confirm the final price during your consultation, based on hair length, thickness and the look you want.</p>
-    <div class="cols">
-      <div>
-        <div class="block">
-          <h3>Color <small>Custom</small></h3>
-          <div class="row">Balayage<span class="dots"></span><b>$100 +</b></div>
-          <div class="row">Complete Highlight<span class="dots"></span><b>$90</b></div>
-          <div class="row">Face Framing Highlight<span class="dots"></span><b>$65</b></div>
-          <div class="row">Color Retouch<span class="dots"></span><b>$62 +</b></div>
-          <div class="row">Root and Scoot<span class="dots"></span><b>$35 +</b></div>
-          <div class="row">Toner<span class="dots"></span><b>$20</b></div>
-          <div class="row">Fashion Color<span class="dots"></span><b class="c">Consultation</b></div>
-        </div>
-      </div>
-      <div>
-        <div class="block">
-          <h3>Cuts <small>Precision</small></h3>
-          <div class="row">Haircut + Blow Dry<span class="dots"></span><b>$52 +</b></div>
-          <div class="row">Short Clipper Cut<span class="dots"></span><b>$32 +</b></div>
-          <div class="row">Kid's Cut (under 12)<span class="dots"></span><b>$26 +</b></div>
-        </div>
-        <div class="block">
-          <h3>Shampoo + Style <small>Finish</small></h3>
-          <div class="row">Shampoo + Blow Dry<span class="dots"></span><b>$32 +</b></div>
-          <div class="row">Heat Styling Only<span class="dots"></span><b>$15 +</b></div>
-          <div class="row">Conditioning Treatment<span class="dots"></span><b>$15</b></div>
-        </div>
-      </div>
-      <div>
-        <div class="block">
-          <h3>Red Carpet <small>Occasion</small></h3>
-          <div class="row">Bridal<span class="dots"></span><b>$75 +</b></div>
-          <div class="row">Formal Styles<span class="dots"></span><b>$60 +</b></div>
-          <div class="row">Extensions<span class="dots"></span><b class="c">Consultation</b></div>
-        </div>
-        <div class="block">
-          <h3>Extras <small>Add-on</small></h3>
-          <div class="row">Brow Tinting<span class="dots"></span><b>$15</b></div>
-          <div class="row">Waxing, per facial area<span class="dots"></span><b>$15</b></div>
-        </div>
+  <svg class="ghost-d" width="720" height="720" style="color:#fff"><use href="#emblem"/></svg>
+  <div class="wrap layout">
+    <div class="visual reveal">
+      <div class="img"><img src="img/marianna-2.jpg" alt="Stylist Marianna styling curly hair at Duality Salon" loading="lazy"></div>
+      <div class="cap">
+        <small>Every visit</small>
+        <b>Begins with a thoughtful conversation.</b>
+        <a href="tel:+17169988528">Not sure what to book? Call us</a>
       </div>
     </div>
-    <div class="foot">
-      <p>Not sure what to book? Call the salon and we will point you to the right service and stylist.</p>
-      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn light">Book Online <span class="arr">→</span></a>
+    <div class="reveal d1">
+      <div class="eyebrow">The Salon Menu</div>
+      <h2>Clear pricing, <em>no surprises</em></h2>
+      <p class="lead-in">Prices are starting points. Your stylist confirms the final price at your consultation, based on hair length, thickness and the look you want.</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-p="p-color" role="tab"><i>01</i>Color</button>
+        <button class="tab" data-p="p-cuts" role="tab"><i>02</i>Cuts</button>
+        <button class="tab" data-p="p-red" role="tab"><i>03</i>Red Carpet</button>
+        <button class="tab" data-p="p-finish" role="tab"><i>04</i>Finish &amp; Extras</button>
+      </div>
+
+      <div class="panel on" id="p-color">
+        <div class="item"><div class="nm">Balayage <em>Signature</em></div><div class="pr"><sup>$</sup>100<small>+</small></div><div class="ds">Hand-painted, lived-in dimension that grows out softly.</div></div>
+        <div class="item"><div class="nm">Complete Highlight</div><div class="pr"><sup>$</sup>90</div><div class="ds">Full foil highlights for all-over brightness.</div></div>
+        <div class="item"><div class="nm">Face Framing Highlight</div><div class="pr"><sup>$</sup>65</div><div class="ds">Brightness around the face, right where it shows.</div></div>
+        <div class="item"><div class="nm">Color Retouch</div><div class="pr"><sup>$</sup>62<small>+</small></div><div class="ds">Root color refresh and grey coverage.</div></div>
+        <div class="item"><div class="nm">Root and Scoot</div><div class="pr"><sup>$</sup>35<small>+</small></div><div class="ds">A quick root refresh between full visits.</div></div>
+        <div class="item"><div class="nm">Toner</div><div class="pr"><sup>$</sup>20</div><div class="ds">Refines your tone and adds shine.</div></div>
+        <div class="item"><div class="nm">Fashion Color</div><div class="pr c">Consultation</div><div class="ds">Vivid and creative color, planned with you.</div></div>
+      </div>
+      <div class="panel" id="p-cuts">
+        <div class="item"><div class="nm">Haircut + Blow Dry</div><div class="pr"><sup>$</sup>52<small>+</small></div><div class="ds">Consultation, precision cut and a polished blowout.</div></div>
+        <div class="item"><div class="nm">Short Clipper Cut</div><div class="pr"><sup>$</sup>32<small>+</small></div><div class="ds">Clean, tailored short cuts.</div></div>
+        <div class="item"><div class="nm">Kid's Cut <span style="font-size:.7em;color:#9d9489">(under 12)</span></div><div class="pr"><sup>$</sup>26<small>+</small></div><div class="ds">Patient, gentle cuts for little ones.</div></div>
+      </div>
+      <div class="panel" id="p-red">
+        <div class="item"><div class="nm">Bridal <em>Signature</em></div><div class="pr"><sup>$</sup>75<small>+</small></div><div class="ds">Wedding-day hair built to last from the ceremony to the last dance.</div></div>
+        <div class="item"><div class="nm">Formal Styles</div><div class="pr"><sup>$</sup>60<small>+</small></div><div class="ds">Prom, gala and special-occasion styling.</div></div>
+        <div class="item"><div class="nm">Hair Extensions</div><div class="pr c">Consultation</div><div class="ds">Length and fullness, color-matched to you.</div></div>
+      </div>
+      <div class="panel" id="p-finish">
+        <div class="item"><div class="nm">Shampoo + Blow Dry</div><div class="pr"><sup>$</sup>32<small>+</small></div><div class="ds">A salon-smooth finish for any day of the week.</div></div>
+        <div class="item"><div class="nm">Heat Styling Only</div><div class="pr"><sup>$</sup>15<small>+</small></div><div class="ds">Curls, waves or sleek and straight.</div></div>
+        <div class="item"><div class="nm">Customized Conditioning Treatment</div><div class="pr"><sup>$</sup>15</div><div class="ds">A treatment matched to what your hair needs.</div></div>
+        <div class="item"><div class="nm">Brow Tinting</div><div class="pr"><sup>$</sup>15</div><div class="ds">Soft definition for your brows.</div></div>
+        <div class="item"><div class="nm">Waxing</div><div class="pr"><sup>$</sup>15<small>/ area</small></div><div class="ds">Priced per facial area.</div></div>
+      </div>
+
+      <div class="foot">
+        <p>Service descriptions drafted for review. Prices from the salon's current menu.</p>
+        <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn light">Book Online <span class="arr">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -940,6 +1054,30 @@
     var nav=document.querySelector('.nav');
     document.querySelector('.burger').addEventListener('click',function(){nav.classList.toggle('open');});
     nav.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
+
+    // price menu tabs
+    var tabs=document.querySelectorAll('.tab');
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('on');});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
+      t.classList.add('on');document.getElementById(t.dataset.p).classList.add('on');
+    });});
+
+    // scroll reveal, staggered within each group
+    var groups=['.about .frame','.about .grid > div:last-child','.team .head-row','.team .member','.team .mother','.edu .txt','.steps .eyebrow','.steps h2','.step','.reviews .head-row','.rev','.area .grid > div','.strip .head-row','.strip .row a','.faq .grid > div','.cta-band .wrap','.contact .grid > *'];
+    groups.forEach(function(sel){document.querySelectorAll(sel).forEach(function(el,i){
+      el.classList.add('reveal');if(i%4)el.classList.add('d'+(i%4));
+    });});
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){
+      if(e.isIntersecting){
+        var t=e.target;t.classList.add('in');io.unobserve(t);
+        // hand control back to each element's own hover transitions once revealed
+        setTimeout(function(){t.classList.remove('reveal','d1','d2','d3');},1500);
+      }
+    });},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
   })();
 </script>
 </body>
