@@ -193,16 +193,22 @@
   .menu .visual .cap b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15;margin-top:8px;}
   .menu .visual .cap a{display:inline-block;margin-top:12px;font-size:13.5px;border-bottom:1px solid var(--brass);}
   .menu .lead-in{color:#bdb4a8;font-size:16.5px;max-width:560px;margin-top:18px;}
-  .tabs{display:flex;gap:0;margin-top:38px;border-bottom:1px solid var(--line-dark);overflow-x:auto;scrollbar-width:none;}
-  .tabs::-webkit-scrollbar{display:none;}
-  .tab{position:relative;background:none;border:0;color:#8f867b;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:18px 24px 20px 0;margin-right:10px;cursor:pointer;white-space:nowrap;transition:color .3s;}
-  .tab i{font-style:normal;font-family:var(--serif);font-size:15px;letter-spacing:.05em;color:var(--brass-lt);margin-right:8px;opacity:.6;}
-  .tab::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--brass-lt);transition:width .45s cubic-bezier(.2,.7,.2,1);}
-  .tab:hover{color:#e9e1d6;}
-  .tab.on{color:#fff;}
-  .tab.on i{opacity:1;}
-  .tab.on::after{width:calc(100% - 24px);}
-  .panel{display:none;padding-top:14px;}
+  .tabs-label{display:flex;align-items:center;gap:10px;margin-top:36px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8f867b;}
+  .tabs-label svg{flex-shrink:0;}
+  .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+  .tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:left;background:rgba(255,255,255,.03);border:1px solid rgba(201,175,134,.32);color:#e9e1d6;font-family:var(--sans);padding:16px 18px 15px;cursor:pointer;transition:background .3s,border-color .3s,color .3s,transform .3s;}
+  .tab i{font-style:normal;font-family:var(--serif);font-size:15px;color:var(--brass-lt);line-height:1;}
+  .tab b{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.3;}
+  .tab small{font-size:12.5px;color:#8f867b;transition:color .3s;}
+  .tab .go{position:absolute;right:16px;top:14px;font-size:15px;color:var(--brass-lt);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s;}
+  .tab:hover{border-color:var(--brass-lt);background:rgba(201,175,134,.1);transform:translateY(-2px);}
+  .tab:hover .go{opacity:1;transform:none;}
+  .tab:focus-visible{outline:2px solid var(--brass-lt);outline-offset:3px;}
+  .tab.on{background:var(--ivory);border-color:var(--ivory);color:var(--ink);transform:none;}
+  .tab.on i,.tab.on small{color:var(--brass);}
+  .tab.on .go{display:none;}
+  .tab.on::after{content:"";position:absolute;left:24px;bottom:-7px;width:12px;height:12px;background:var(--ivory);transform:rotate(45deg);}
+  .panel{display:none;margin-top:26px;border-top:1px solid var(--line-dark);padding-top:6px;}
   .panel.on{display:block;animation:panelIn .6s cubic-bezier(.2,.7,.2,1);}
   @keyframes panelIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
   .item{display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:padding .35s,background .35s;}
@@ -429,7 +435,9 @@
     .menu .visual{min-height:380px;margin-right:22px;}
     .menu .visual .cap{bottom:24px;padding:20px 22px;max-width:260px;}
     .menu .visual .cap b{font-size:22px;}
-    .tab{padding-right:18px;font-size:11.5px;}
+    .tabs{grid-template-columns:1fr 1fr;}
+    .tab{padding:14px 14px 13px;}
+    .tab b{font-size:11.5px;}
     .item .nm{font-size:21px;}
     .item .pr{font-size:24px;}
     .item .ds{font-size:13.5px;}
@@ -680,11 +688,12 @@
       <h2>Clear pricing, <em>no surprises</em></h2>
       <p class="lead-in">Prices are starting points. Your stylist confirms the final price at your consultation, based on hair length, thickness and the look you want.</p>
 
+      <div class="tabs-label"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#C9AF86" stroke-width="1.2"><path d="M6 13V3.5a1.5 1.5 0 013 0V8l3.4.7a1.5 1.5 0 011.2 1.7L13 14H7z"/></svg>Choose a category to see prices</div>
       <div class="tabs" role="tablist">
-        <button class="tab on" data-p="p-color" role="tab"><i>01</i>Color</button>
-        <button class="tab" data-p="p-cuts" role="tab"><i>02</i>Cuts</button>
-        <button class="tab" data-p="p-red" role="tab"><i>03</i>Red Carpet</button>
-        <button class="tab" data-p="p-finish" role="tab"><i>04</i>Finish &amp; Extras</button>
+        <button class="tab on" data-p="p-color" role="tab" aria-selected="true"><i>01</i><b>Color</b><small>7 services</small><span class="go">→</span></button>
+        <button class="tab" data-p="p-cuts" role="tab" aria-selected="false"><i>02</i><b>Cuts</b><small>3 services</small><span class="go">→</span></button>
+        <button class="tab" data-p="p-red" role="tab" aria-selected="false"><i>03</i><b>Red Carpet</b><small>3 services</small><span class="go">→</span></button>
+        <button class="tab" data-p="p-finish" role="tab" aria-selected="false"><i>04</i><b>Finish &amp; Extras</b><small>5 services</small><span class="go">→</span></button>
       </div>
 
       <div class="panel on" id="p-color">
@@ -1058,7 +1067,8 @@
     // price menu tabs
     var tabs=document.querySelectorAll('.tab');
     tabs.forEach(function(t){t.addEventListener('click',function(){
-      tabs.forEach(function(x){x.classList.remove('on');});
+      tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});
+      t.setAttribute('aria-selected','true');
       document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
       t.classList.add('on');document.getElementById(t.dataset.p).classList.add('on');
     });});
