@@ -18,9 +18,7 @@
     --line:#E7E1D8;
     --stone:#6F675E;
     --stone-2:#A39A8F;
-    --blue:#0A79B9;
-    --sage:#5F7F6B;
-    --sage-lt:#E4EBE5;
+    --brass:#8C6D43;
     --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
     --sans:'Jost','Segoe UI',Arial,sans-serif;
     --wrap:1120px;
@@ -36,7 +34,7 @@
   /* ---------- shared ---------- */
   .section{padding:150px 0;}
   .tint{background:var(--ivory);}
-  .label{font-size:12px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);}
+  .label{font-size:12px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);}
   h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;}
   h2{font-size:clamp(36px,3.8vw,48px);margin-top:18px;}
   h2 em,h1 em{font-style:italic;}
@@ -48,7 +46,7 @@
   .btn.line{background:transparent;color:var(--ink);}
   .btn.line:hover{background:var(--ink);color:#fff;}
   .link{display:inline-block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:4px;transition:border-color .25s,color .25s;}
-  .link:hover{border-color:var(--blue);color:var(--blue);}
+  .link:hover{border-color:var(--ink);}
   .note{font-size:12.5px;color:var(--stone-2);font-style:italic;}
 
   /* ---------- review ribbon ---------- */
@@ -77,16 +75,8 @@
   .hero .lede{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:var(--stone);margin-top:22px;}
   .hero .actions{display:flex;align-items:center;gap:28px;margin-top:40px;flex-wrap:wrap;}
   .hero .facts{margin-top:56px;font-size:13px;letter-spacing:.1em;color:var(--stone-2);}
-  .hero .facts span{margin:0 10px;color:var(--sage);}
+  .hero .facts span{margin:0 10px;}
   .hero .photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 72%;}
-  .quick{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:80px;}
-  .quick a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:20px 22px;border:1px solid var(--line);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;transition:border-color .25s,background .25s,color .25s;}
-  .quick a span{color:var(--sage);font-size:15px;letter-spacing:0;transition:transform .25s,color .25s;}
-  .quick a:hover{border-color:var(--blue);background:var(--sage-lt);}
-  .quick a:hover span{color:var(--blue);transform:translateX(3px);}
-  .quick a.primary{background:var(--ink);border-color:var(--ink);color:#fff;}
-  .quick a.primary span{color:#fff;}
-  .quick a.primary:hover{background:var(--blue);border-color:var(--blue);}
 
   /* ---------- about ---------- */
   .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:center;}
@@ -121,10 +111,8 @@
   .member img,.member .soon{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;}
   .member .soon{background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone-2);}
   .member h3{font-size:24px;margin-top:20px;}
-  .member .role{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-top:6px;}
+  .member .role{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-top:6px;}
   .member p{font-size:14.5px;color:var(--stone);margin-top:10px;line-height:1.6;}
-  .member .off{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-top:12px;padding-top:12px;border-top:1px solid var(--line);line-height:1.45;}
-  .member .off::before{content:"Off duty";display:block;font-family:var(--sans);font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:4px;}
   .team .more{text-align:center;margin-top:64px;}
 
   /* ---------- statement ---------- */
@@ -140,7 +128,7 @@
 
   /* ---------- steps ---------- */
   .steps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:56px;margin-top:80px;}
-  .step .n{font-family:var(--serif);font-size:20px;color:var(--sage);}
+  .step .n{font-family:var(--serif);font-size:20px;color:var(--brass);}
   .step h3{font-size:25px;margin-top:14px;}
   .step p{color:var(--stone);font-size:15.5px;margin-top:10px;}
 
@@ -154,7 +142,7 @@
   .area .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:center;}
   .area .cities{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:36px;}
   .area .cities a{padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:21px;transition:color .2s;}
-  .area .cities a:hover{color:var(--blue);}
+  .area .cities a:hover{color:var(--brass);}
   .area .map{position:relative;aspect-ratio:1/1;background:var(--sand);}
   .area .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.02);}
   .area .addr{margin-top:36px;color:var(--stone);font-size:15.5px;}
@@ -231,9 +219,6 @@
     .hero .grid{grid-template-columns:1fr;gap:40px;}
     .hero .photo{order:-1;}
     .hero .facts{margin-top:36px;}
-    .quick{grid-template-columns:1fr 1fr;gap:10px;margin-top:48px;}
-    .quick a{padding:16px;font-size:11.5px;}
-    .quick a.primary{grid-column:1/-1;}
     .about .grid,.edu .grid,.area .grid,.contact .grid{grid-template-columns:1fr;gap:48px;}
     .svc-grid{grid-template-columns:1fr;gap:48px;margin-top:56px;}
     .menu .cols{grid-template-columns:1fr;gap:56px;margin-top:56px;}
@@ -291,13 +276,6 @@
       <img src="../img/group-1.jpg" alt="The Duality Salon stylist team in their Williamsville, NY salon" fetchpriority="high">
     </div>
   </div>
-  <nav class="wrap quick" aria-label="Quick links">
-    <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="primary">Book Online <span>→</span></a>
-    <a href="#menu">Services &amp; Prices <span>→</span></a>
-    <a href="#team">Meet the Team <span>→</span></a>
-    <a href="#gallery">Inside the Salon <span>→</span></a>
-    <a href="#contact">Hours &amp; Map <span>→</span></a>
-  </nav>
 </section>
 
 <!-- ============ ABOUT ============ -->
@@ -418,11 +396,11 @@
       <p class="sub">Five stylists with more than 100 years of combined experience.</p>
     </div>
     <div class="grid">
-      <div class="member"><img src="../img/sue.jpg" alt="Sue Dicky, stylist at Duality Salon" loading="lazy"><h3>Sue Dicky</h3><div class="role">Artistic Director</div><p>40 years behind the chair and a former L'ANZA educator.</p><p class="off">Sewing a new project or volunteering with her church's children's program.</p></div>
-      <div class="member"><img src="../img/leah.jpg" alt="Leah Blachaniec, owner of Duality Salon" loading="lazy"><h3>Leah Blachaniec</h3><div class="role">Owner &amp; Stylist</div><p>Making clients feel beautiful since 2013.</p><p class="off">Caring for her houseplants, tending her summer garden and baking.</p></div>
-      <div class="member"><img src="../img/amanda.jpg" alt="Amanda Pohlman, stylist at Duality Salon" loading="lazy"><h3>Amanda Pohlman</h3><div class="role">Stylist</div><p>Almost 20 years, known for polished blowouts.</p><p class="off">Traveling with her husband and spending time with family.</p></div>
-      <div class="member"><div class="soon">Photo coming soon</div><h3>Darcy Ragione</h3><div class="role">Stylist</div><p>Almost 30 years of custom cuts and styles.</p><p class="off">Working out and spending time with her pups.</p></div>
-      <div class="member"><img src="../img/marianna.jpg" alt="Marianna Campione, curly hair and vivid color stylist at Duality Salon" loading="lazy"><h3>Marianna Campione</h3><div class="role">Stylist</div><p>Natural curls and vivid color.</p><p class="off">Traveling and getting lost in a good book.</p></div>
+      <div class="member"><img src="../img/sue.jpg" alt="Sue Dicky, stylist at Duality Salon" loading="lazy"><h3>Sue Dicky</h3><div class="role">Artistic Director</div><p>40 years behind the chair and a former L'ANZA educator.</p></div>
+      <div class="member"><img src="../img/leah.jpg" alt="Leah Blachaniec, owner of Duality Salon" loading="lazy"><h3>Leah Blachaniec</h3><div class="role">Owner &amp; Stylist</div><p>Making clients feel beautiful since 2013.</p></div>
+      <div class="member"><img src="../img/amanda.jpg" alt="Amanda Pohlman, stylist at Duality Salon" loading="lazy"><h3>Amanda Pohlman</h3><div class="role">Stylist</div><p>Almost 20 years, known for polished blowouts.</p></div>
+      <div class="member"><div class="soon">Photo coming soon</div><h3>Darcy Ragione</h3><div class="role">Stylist</div><p>Almost 30 years of custom cuts and styles.</p></div>
+      <div class="member"><img src="../img/marianna.jpg" alt="Marianna Campione, curly hair and vivid color stylist at Duality Salon" loading="lazy"><h3>Marianna Campione</h3><div class="role">Stylist</div><p>Natural curls and vivid color.</p></div>
     </div>
     <div class="more"><a href="#" class="link">Read the full bios</a></div>
   </div>
