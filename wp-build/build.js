@@ -58,6 +58,13 @@ swap(
   `<img src="img/curly-class-3.jpg" alt="Curly cut demonstration at Duality Salon" loading="lazy" style="object-position:50% 40%">`
 );
 
+// Price menu panel is tall and narrow: use a portrait crop from the original photo so every
+// srcset size is sharp (the landscape version got upscaled from its 768w copy)
+swap(
+  `<div class="img"><img src="img/marianna-2.jpg" alt="Stylist Marianna styling curly hair at Duality Salon" loading="lazy"></div>`,
+  `<div class="img"><img src="img/marianna-portrait.jpg" alt="Stylist Marianna styling curly hair at Duality Salon" loading="lazy"></div>`
+);
+
 // Price menu footnote was a review note
 swap(
   `<p>Service descriptions drafted for review. Prices from the salon's current menu.</p>`,
@@ -88,6 +95,7 @@ const extraCss = `
   /* ---------- WordPress build additions ---------- */
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
+  .menu .visual img{object-position:50% 35%;}
   .edu .wrap{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:64px;align-items:center;}
   .edu::before{background:linear-gradient(90deg,rgba(22,20,18,.94) 0%,rgba(22,20,18,.86) 55%,rgba(22,20,18,.72) 100%);}
   .edu-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;}
