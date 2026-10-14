@@ -9,7 +9,7 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
 const css = html.match(/<style>([\s\S]*?)<\/style>/)[1];
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-const js = scripts[scripts.length - 1];
+let js = scripts[scripts.length - 1];
 let body = html.match(/<body>([\s\S]*?)<script>/)[1];
 
 function swap(from, to) {
@@ -58,6 +58,49 @@ swap(
   `<img src="img/curly-class-3.jpg" alt="Curly cut demonstration at Duality Salon" loading="lazy" style="object-position:50% 40%">`
 );
 
+// Booking bar: the mockup's fields were all plain links to Meevo. Service and Stylist become real
+// dropdowns that route to Meevo deep links (filled in home.js once copied from Meevo). Meevo can't
+// preselect a date, so Day becomes the opening hours.
+const MEEVO = 'https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068';
+swap(
+  `      <a class="field" href="${MEEVO}" target="_blank" rel="noopener"><label>Service</label><span class="val">Color or Cut <i>▾</i></span></a>
+      <a class="field" href="${MEEVO}" target="_blank" rel="noopener"><label>Stylist</label><span class="val">Any stylist <i>▾</i></span></a>
+      <a class="field" href="${MEEVO}" target="_blank" rel="noopener"><label>Day</label><span class="val">Wed – Sat <i>▾</i></span></a>
+      <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn">Check Availability <span class="arr">→</span></a></div>`,
+  `      <div class="field pick"><label for="bb-service">Service</label><span class="val"><select id="bb-service"><option value="">Any service</option><option value="color">Hair Color</option><option value="cut">Haircut</option><option value="redcarpet">Red Carpet Style</option><option value="extensions">Extensions</option></select><i>▾</i></span></div>
+      <div class="field pick"><label for="bb-stylist">Stylist</label><span class="val"><select id="bb-stylist"><option value="">Any stylist</option><option value="sue">Sue</option><option value="leah">Leah</option><option value="amanda">Amanda</option><option value="darcy">Darcy</option><option value="marianna">Marianna</option></select><i>▾</i></span></div>
+      <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</small></div>
+      <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn" id="bb-go">Check Availability <span class="arr">→</span></a></div>`
+);
+
+js += `
+// Booking bar routing. Paste Meevo deep links here (Meevo: Service Category > Main tab,
+// employee profile > Online Booking tab). Empty values fall back to the main booking page.
+(function(){
+  var MEEVO = '${MEEVO}';
+  var LINKS = {
+    service: { color: '', cut: '', redcarpet: '', extensions: '' },
+    stylist: { sue: '', leah: '', amanda: '', darcy: '', marianna: '' }
+  };
+  var svc = document.getElementById('bb-service');
+  var sty = document.getElementById('bb-stylist');
+  var go = document.getElementById('bb-go');
+  if (!svc || !sty || !go) return;
+  // A stylist link skips the stylist step; a service link skips the service steps. Meevo can't combine them,
+  // so a chosen stylist wins when both are set.
+  function target(){ return (sty.value && LINKS.stylist[sty.value]) || (svc.value && LINKS.service[svc.value]) || MEEVO; }
+  function sync(){ go.href = target(); }
+  svc.addEventListener('change', sync);
+  sty.addEventListener('change', sync);
+  go.addEventListener('click', function(){
+    sync();
+    if (typeof gtag === 'function') {
+      gtag('event', 'book_online_click', { placement: 'booking_bar', service: svc.value || 'any', stylist: sty.value || 'any' });
+    }
+  });
+})();
+`;
+
 // Price menu panel is tall and narrow: use a portrait crop from the original photo so every
 // srcset size is sharp (the landscape version got upscaled from its 768w copy)
 swap(
@@ -96,6 +139,14 @@ const extraCss = `
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
   .menu .visual img{object-position:50% 35%;}
+  .book-bar .field.pick{cursor:pointer;transition:background .2s;}
+  .book-bar .field.pick:hover,.book-bar .field.pick:focus-within{background:var(--ivory);}
+  .book-bar .field .val{position:relative;}
+  .book-bar .field select{appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;padding:0 26px 0 0;margin:0;font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);cursor:pointer;line-height:1.3;}
+  .book-bar .field select:focus{outline:none;}
+  .book-bar .field select:focus-visible{outline:2px solid var(--brass-lt);outline-offset:6px;}
+  .book-bar .field .val i{position:absolute;right:0;top:50%;transform:translateY(-50%);pointer-events:none;}
+  .book-bar .field .hrs{display:block;font-size:12px;color:var(--stone);margin-top:4px;letter-spacing:.02em;}
   .edu .wrap{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:64px;align-items:center;}
   .edu::before{background:linear-gradient(90deg,rgba(22,20,18,.94) 0%,rgba(22,20,18,.86) 55%,rgba(22,20,18,.72) 100%);}
   .edu-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;}

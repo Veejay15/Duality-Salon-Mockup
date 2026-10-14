@@ -28,3 +28,29 @@
     });},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(e){io.observe(e);});
   })();
+
+// Booking bar routing. Paste Meevo deep links here (Meevo: Service Category > Main tab,
+// employee profile > Online Booking tab). Empty values fall back to the main booking page.
+(function(){
+  var MEEVO = 'https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068';
+  var LINKS = {
+    service: { color: '', cut: '', redcarpet: '', extensions: '' },
+    stylist: { sue: '', leah: '', amanda: '', darcy: '', marianna: '' }
+  };
+  var svc = document.getElementById('bb-service');
+  var sty = document.getElementById('bb-stylist');
+  var go = document.getElementById('bb-go');
+  if (!svc || !sty || !go) return;
+  // A stylist link skips the stylist step; a service link skips the service steps. Meevo can't combine them,
+  // so a chosen stylist wins when both are set.
+  function target(){ return (sty.value && LINKS.stylist[sty.value]) || (svc.value && LINKS.service[svc.value]) || MEEVO; }
+  function sync(){ go.href = target(); }
+  svc.addEventListener('change', sync);
+  sty.addEventListener('change', sync);
+  go.addEventListener('click', function(){
+    sync();
+    if (typeof gtag === 'function') {
+      gtag('event', 'book_online_click', { placement: 'booking_bar', service: svc.value || 'any', stylist: sty.value || 'any' });
+    }
+  });
+})();
