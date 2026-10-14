@@ -34,8 +34,22 @@ add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('duality-home', $dir . '/home.js', [], $ver, true);
 }, 999);
 
-// Customizer "Additional CSS" targets the old theme layout; keep it off this page.
+// The Salon theme prints option-based CSS/JS (body backgrounds, fonts, colors) for its own
+// layout; on this page those rules recolor the new design, so they are switched off here.
+remove_action('wp_head', 'salon_salon_style', 99);
+remove_action('wp_head', 'salon_wp_head');
+remove_action('wp_footer', 'salon_print_inline_script_style');
+// Customizer "Additional CSS" also targets the old theme layout.
 remove_action('wp_head', 'wp_custom_css_cb', 101);
+
+// Some plugins (Slider Revolution) and core global styles enqueue after wp_enqueue_scripts.
+$duality_late_dequeue = function () {
+	foreach (['rs-plugin-settings', 'global-styles', 'classic-theme-styles', 'wp-block-library', 'core-block-supports'] as $handle) {
+		wp_dequeue_style($handle);
+	}
+};
+add_action('wp_print_styles', $duality_late_dequeue, 999);
+add_action('wp_print_footer_scripts', $duality_late_dequeue, 1);
 
 $content = get_post_field('post_content', get_queried_object_id());
 ?><!DOCTYPE html>
