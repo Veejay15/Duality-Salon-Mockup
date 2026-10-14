@@ -69,7 +69,7 @@ swap(
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn">Check Availability <span class="arr">→</span></a></div>`,
   `      <div class="field pick"><label for="bb-service">Service</label><span class="val"><select id="bb-service"><option value="">Any service</option><option value="color">Hair Color</option><option value="cut">Haircut</option><option value="redcarpet">Red Carpet Style</option><option value="extensions">Extensions</option></select><i>▾</i></span></div>
       <div class="field pick"><label for="bb-stylist">Stylist</label><span class="val"><select id="bb-stylist"><option value="">Any stylist</option><option value="sue">Sue</option><option value="leah">Leah</option><option value="amanda">Amanda</option><option value="darcy">Darcy</option><option value="marianna">Marianna</option></select><i>▾</i></span></div>
-      <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</small></div>
+      <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8<br>Fri 9–5 · Sat 9–3</small></div>
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn" id="bb-go">Check Availability <span class="arr">→</span></a></div>`
 );
 
