@@ -262,6 +262,91 @@ swap(
 );
 if (/undivided/.test(body)) throw new Error('"undivided attention" still on page');
 
+// ---------- Price menu: "Duality Salon Menu 9-2026.docx" (client's updated list) ----------
+// Service names and prices exactly as the salon lists them; tab order follows their document.
+const MENU = [
+  { id: 'p-color', tab: 'Color', items: [
+    ['Full Highlights', '$130', true, 'Foil highlights throughout for all-over brightness.'],
+    ['Partial Highlights', '$95', true, 'Brightness where it shows most, on top and around the face.'],
+    ['All Over Color', '$100', true, 'One rich, even color from roots to ends.'],
+    ['Retouch', '$70', true, 'Root color refresh and grey coverage.'],
+    ['Toner', '$40', true, 'Refines your tone and adds shine.'],
+    ['Color Correction', null, false, 'Fixing color that didn\'t go to plan, mapped out with you first.'],
+    ['Vivid Color', null, false, 'Bold, creative color, planned with you.'],
+  ]},
+  { id: 'p-cuts', tab: 'Haircuts', items: [
+    ['Haircut with Blow-Dry', '$60', true, 'Consultation, precision cut and a polished blowout.'],
+    ['Haircut, No Blow-Dry', '$40', true, 'A precision cut, ready to air dry or style at home.'],
+    ['Curly Cut with Style', '$75', true, 'A cut tailored to your natural curl pattern, finished with a curl style.'],
+    ['Children Under 12', '$35', true, 'Patient, gentle cuts for little ones.'],
+  ]},
+  { id: 'p-style', tab: 'Styling', items: [
+    ['Shampoo Blow Dry', '$40', true, 'A salon-smooth blowout for any day of the week.'],
+    ['Curly Style', '$50', true, 'Curls cleansed and styled to bring out your natural pattern.'],
+  ]},
+  { id: 'p-other', tab: 'Other Services', items: [
+    ['Brow Tinting', '$15', false, 'Soft definition for your brows.'],
+    ['Facial Waxing', '$15', false, 'Priced per facial area.', '/ area'],
+  ]},
+];
+const price = ([, p, up, , unit]) => p === null
+  ? `<div class="pr c">Consultation</div>`
+  : `<div class="pr"><sup>$</sup>${p.slice(1)}${up ? '<small>+</small>' : ''}${unit ? `<small>${unit}</small>` : ''}</div>`;
+const menuHtml = `<div class="tabs" role="tablist">
+${MENU.map((g, i) => `        <button class="tab${i ? '' : ' on'}" data-p="${g.id}" role="tab" aria-selected="${i ? 'false' : 'true'}"><i>0${i + 1}</i><b>${g.tab}</b><small>${g.items.length} services</small><span class="go">→</span></button>`).join('\n')}
+      </div>
+
+${MENU.map((g, i) => `      <div class="panel${i ? '' : ' on'}" id="${g.id}">
+${g.items.map(it => `        <div class="item"><div class="nm">${it[0]}</div>${price(it)}<div class="ds">${it[3].replace(/'/g, '&#8217;')}</div></div>`).join('\n')}
+      </div>`).join('\n')}
+
+      `;
+const before = body;
+body = body.replace(/<div class="tabs" role="tablist">[\s\S]*?(?=<div class="foot">)/, menuHtml);
+if (body === before) throw new Error('Price menu block not found');
+
+// Everything else that quoted old prices or services no longer on the menu
+swap(
+  `<p>Balayage, highlights, grey coverage and vivid fashion color, custom mixed for your tone.</p>`,
+  `<p>Highlights, all-over color, grey coverage and vivid color, custom mixed for your tone.</p>`
+);
+swap(
+  `<ul><li>Balayage &amp; lived-in color</li><li>Highlights &amp; face framing</li><li>Color retouch &amp; grey coverage</li><li>Fashion &amp; vivid color</li></ul>`,
+  `<ul><li>Full &amp; partial highlights</li><li>All-over color &amp; retouch</li><li>Toner</li><li>Vivid color &amp; color correction</li></ul>`
+);
+swap(
+  `<ul><li>Precision cut &amp; blowout</li><li>Curly &amp; textured cuts</li><li>Short &amp; clipper cuts</li><li>Kids' cuts</li></ul>`,
+  `<ul><li>Haircut with blow-dry</li><li>Curly cut with style</li><li>Haircut, no blow-dry</li><li>Kids' cuts</li></ul>`
+);
+swap(
+  `<p>The finishing touches: a polished blowout, a treatment matched to your hair and the small extras that complete the look.</p>
+        <ul><li>Shampoo &amp; blowout</li><li>Heat styling</li><li>Conditioning treatments &amp; toners</li><li>Brow tinting &amp; waxing</li></ul>`,
+  `<p>The finishing touches: a polished blowout or curly style, plus the small extras that complete the look.</p>
+        <ul><li>Shampoo blow dry</li><li>Curly style</li><li>Brow tinting</li><li>Facial waxing</li></ul>`
+);
+swap(
+  `From lived-in balayage to a bridal updo, every service starts with a consultation`,
+  `From dimensional highlights to a curly cut and style, every service starts with a consultation`
+);
+swap(
+  `<p>A haircut with blow dry starts at $52. Short clipper cuts start at $32 and kids' cuts (under 12) start at $26. Your stylist confirms the final price at your consultation.</p>`,
+  `<p>A haircut with blow-dry starts at $60, and a haircut without blow-dry starts at $40. Curly cuts with style start at $75 and kids' cuts (under 12) start at $35. Your stylist confirms the final price at your consultation.</p>`
+);
+swap(
+  `<summary>Do I need a consultation for balayage or fashion color?</summary>
+        <p>Every service starts with a consultation. Fashion color is priced at that consultation so we can plan the right color and budget with you, and your stylist confirms balayage pricing based on your hair's length and thickness.</p>`,
+  `<summary>Do I need a consultation for vivid color or color correction?</summary>
+        <p>Yes. Vivid color and color correction are priced at a consultation so we can plan the right color and budget with you.</p>`
+);
+swap(
+  `<p>Yes. We offer bridal styling and formal styles for prom and special occasions. See the price menu for current pricing.</p>`,
+  `<p>Yes. We offer bridal styling and formal styles for prom and special occasions. Give the salon a call and we will plan it with you.</p>`
+);
+swap(`<li><a href="#services">Hair Color &amp; Balayage</a></li>`, `<li><a href="#services">Hair Color &amp; Highlights</a></li>`);
+for (const gone of ['Balayage', 'Root and Scoot', 'Face Framing', 'Clipper', 'Conditioning', 'Heat Styling', '$52', '$26 +']) {
+  if (body.includes(gone)) throw new Error('Old menu item still on page: ' + gone);
+}
+
 if (/href="#"/.test(body)) throw new Error('Dead href="#" left: ' + body.match(/.{60}href="#".{60}/)[0]);
 
 const extraCss = `
