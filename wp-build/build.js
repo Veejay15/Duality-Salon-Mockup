@@ -67,7 +67,7 @@ swap(
       <a class="field" href="${MEEVO}" target="_blank" rel="noopener"><label>Stylist</label><span class="val">Any stylist <i>▾</i></span></a>
       <a class="field" href="${MEEVO}" target="_blank" rel="noopener"><label>Day</label><span class="val">Wed – Sat <i>▾</i></span></a>
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn">Check Availability <span class="arr">→</span></a></div>`,
-  `      <div class="field pick"><label for="bb-service">Service</label><span class="val"><select id="bb-service"><option value="">Any service</option><option value="color">Hair Color</option><option value="cut">Haircut</option><option value="redcarpet">Red Carpet Style</option><option value="extensions">Extensions</option></select><i>▾</i></span></div>
+  `      <div class="field pick"><label for="bb-service">Service</label><span class="val"><select id="bb-service"><option value="">Any service</option><option value="color">Hair Color</option><option value="cut">Haircut</option><option value="finishing">Finishing &amp; Extras</option><option value="occasion">Bridal &amp; Special Occasion</option></select><i>▾</i></span></div>
       <div class="field pick"><label for="bb-stylist">Stylist</label><span class="val"><select id="bb-stylist"><option value="">Any stylist</option><option value="sue">Sue</option><option value="leah">Leah</option><option value="amanda">Amanda</option><option value="darcy">Darcy</option><option value="marianna">Marianna</option></select><i>▾</i></span></div>
       <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8 · Fri 9–5<br>Sat 9–3 · Tue by appointment</small></div>
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn" id="bb-go">Check Availability <span class="arr">→</span></a></div>`
@@ -79,7 +79,7 @@ js += `
 (function(){
   var MEEVO = '${MEEVO}';
   var LINKS = {
-    service: { color: '', cut: '', redcarpet: '', extensions: '' },
+    service: { color: '', cut: '', finishing: '', occasion: '' },
     stylist: { sue: '', leah: '', amanda: '', darcy: '', marianna: '' }
   };
   var svc = document.getElementById('bb-service');
@@ -224,6 +224,43 @@ swap(
   `<li>Tue by appointment</li><li>Wed–Thu 10–8</li><li>Fri 9–5 · Sat 9–3</li>`
 );
 if (/closed Sunday, Monday and Tuesday|Monday – Tuesday/.test(body)) throw new Error('Old hours left');
+
+// Extensions off the site entirely ("we'd just kind of rather not have that on our website").
+// Kept: Paula's testimonial, a real review; that section is moving to a live Google reviews feed.
+swap(
+  `\n        <div class="item"><div class="nm">Hair Extensions</div><div class="pr c">Consultation</div><div class="ds">Length and fullness, color-matched to you.</div></div>`,
+  ``
+);
+swap(
+  `<summary>Do I need a consultation for balayage, fashion color or extensions?</summary>
+        <p>Fashion color and extensions are priced at a consultation so we can plan the right color, length and budget with you. Balayage starts at $100.</p>`,
+  `<summary>Do I need a consultation for balayage or fashion color?</summary>
+        <p>Every service starts with a consultation. Fashion color is priced at that consultation so we can plan the right color and budget with you, and your stylist confirms balayage pricing based on your hair's length and thickness.</p>`
+);
+swap(`Questions about a service, extensions or a bridal party?`, `Questions about a service or a bridal party?`);
+swap(`<li><a href="#services">Hair Extensions</a></li>`, `<li><a href="#services">Finishing &amp; Extras</a></li>`);
+
+// Red Carpet: less focus, not removed ("we also don't want so much focus on red carpet style")
+swap(`<b>Red Carpet</b><small>3 services</small>`, `<b>Special Occasion</b><small>2 services</small>`);
+swap(`<div class="nm">Bridal <em>Signature</em></div>`, `<div class="nm">Bridal</div>`);
+swap(
+  `<p>Yes. Our Red Carpet Style services cover bridal styling (from $75) and formal styles for prom and special occasions (from $60).</p>`,
+  `<p>Yes. We offer bridal styling and formal styles for prom and special occasions. See the price menu for current pricing.</p>`
+);
+swap(`Hair color, cuts and Red Carpet styling from a mother-daughter team`, `Hair color, cuts and styling from a mother-daughter team`);
+if (/xtension(?!s that Sue)/i.test(body) || /Red Carpet/.test(body)) throw new Error('Extensions or Red Carpet still mentioned');
+
+// "Never overbook" stays (true), but drop lines implying one client at a time: the salon does
+// sometimes double book (e.g. two colour clients processing at once)
+swap(
+  `where we never overbook, so every appointment gets our full, undivided attention.`,
+  `where we never overbook, because your appointment time is your time.`
+);
+swap(
+  `<p>Full, undivided attention from your stylist. Never rushed, never overbooked.</p>`,
+  `<p>Your stylist takes the time to get it right. Never rushed, never overbooked.</p>`
+);
+if (/undivided/.test(body)) throw new Error('"undivided attention" still on page');
 
 if (/href="#"/.test(body)) throw new Error('Dead href="#" left: ' + body.match(/.{60}href="#".{60}/)[0]);
 

@@ -34,7 +34,7 @@
 (function(){
   var MEEVO = 'https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068';
   var LINKS = {
-    service: { color: '', cut: '', redcarpet: '', extensions: '' },
+    service: { color: '', cut: '', finishing: '', occasion: '' },
     stylist: { sue: '', leah: '', amanda: '', darcy: '', marianna: '' }
   };
   var svc = document.getElementById('bb-service');
