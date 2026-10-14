@@ -464,6 +464,11 @@
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
   .menu .visual img{object-position:50% 35%;}
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .svc ul{margin-top:24px;padding-top:18px;border-top:1px solid var(--line-dark);}
+  .svc li{padding:7px 0;}
+  @media (max-width:1180px){ .svc-grid{grid-template-columns:repeat(3,1fr);gap:16px;} .svc{padding:40px 26px 34px;} }
+  @media (max-width:900px){ .svc-grid{grid-template-columns:1fr;} }
   .book-bar .field.pick{cursor:pointer;transition:background .2s;}
   .book-bar .field.pick:hover,.book-bar .field.pick:focus-within{background:var(--ivory);}
   .book-bar .field .val{position:relative;}

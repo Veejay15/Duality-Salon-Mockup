@@ -69,7 +69,7 @@ swap(
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn">Check Availability <span class="arr">→</span></a></div>`,
   `      <div class="field pick"><label for="bb-service">Service</label><span class="val"><select id="bb-service"><option value="">Any service</option><option value="color">Hair Color</option><option value="cut">Haircut</option><option value="redcarpet">Red Carpet Style</option><option value="extensions">Extensions</option></select><i>▾</i></span></div>
       <div class="field pick"><label for="bb-stylist">Stylist</label><span class="val"><select id="bb-stylist"><option value="">Any stylist</option><option value="sue">Sue</option><option value="leah">Leah</option><option value="amanda">Amanda</option><option value="darcy">Darcy</option><option value="marianna">Marianna</option></select><i>▾</i></span></div>
-      <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8<br>Fri 9–5 · Sat 9–3</small></div>
+      <div class="field"><label>Open</label><span class="val">Wed – Sat</span><small class="hrs">Wed–Thu 10–8 · Fri 9–5<br>Sat 9–3 · Tue by appointment</small></div>
       <div class="go"><a href="${MEEVO}" target="_blank" rel="noopener" class="btn" id="bb-go">Check Availability <span class="arr">→</span></a></div>`
 );
 
@@ -132,6 +132,99 @@ body = body.replace(
     </div>`
 );
 
+// ---------- Client edits, Oct 2026 ("Edit Duality Salon Homepage") ----------
+
+// Services: four cards become three (Extensions and Red Carpet Style out, Finishing & Extras in),
+// and the "Starting at $35 / $26 / $60" anchors go: the salon felt they made it look cheap.
+body = body.replace(/\s*<div class="from">[\s\S]*?<\/div>/g, '');
+swap(
+  `<ul><li>Balayage<b>$100 +</b></li><li>Complete Highlight<b>$90</b></li><li>Color Retouch<b>$62 +</b></li></ul>`,
+  `<ul><li>Balayage &amp; lived-in color</li><li>Highlights &amp; face framing</li><li>Color retouch &amp; grey coverage</li><li>Fashion &amp; vivid color</li></ul>`
+);
+swap(
+  `<ul><li>Haircut + Blow Dry<b>$52 +</b></li><li>Short Clipper Cut<b>$32 +</b></li><li>Kid's Cut (under 12)<b>$26 +</b></li></ul>`,
+  `<ul><li>Precision cut &amp; blowout</li><li>Curly &amp; textured cuts</li><li>Short &amp; clipper cuts</li><li>Kids' cuts</li></ul>`
+);
+body = body.replace(
+  /<div class="svc reveal d2">[\s\S]*?<div class="svc reveal d3">[\s\S]*?<\/a>\s*<\/div>/,
+  `<div class="svc reveal d2">
+        <span class="ghost-n">03</span>
+        <div class="ico"><span class="ring dash"></span><span class="ring"></span>
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="26" r="13" pathLength="1"/>
+            <circle cx="24" cy="26" r="5" class="acc" pathLength="1"/>
+            <path d="M37 20h14a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H37" pathLength="1"/>
+            <path d="M20 39l-3 17h10l2-16" pathLength="1"/>
+            <path d="M58 22h4M58 28h4M58 34h4" class="acc" pathLength="1"/>
+          </svg>
+        </div>
+        <h3>Finishing &amp; Extras</h3>
+        <p>The finishing touches: a polished blowout, a treatment matched to your hair and the small extras that complete the look.</p>
+        <ul><li>Shampoo &amp; blowout</li><li>Heat styling</li><li>Conditioning treatments &amp; toners</li><li>Brow tinting &amp; waxing</li></ul>
+        <a href="#menu" class="more">See the full menu <span class="ln"></span></a>
+      </div>`
+);
+if (body.includes('<h3>Extensions</h3>') || body.includes('<span class="ghost-n">04</span>')) throw new Error('Services still has four cards');
+
+// "We never overbook" panel becomes the consultation story (copy from the task)
+swap(
+  `<div class="eyebrow">Salon time is your time</div>
+        <h3>We never overbook. <em>Ever.</em></h3>
+        <p>Your appointment is yours alone. No double-booking, no rushing you out of the chair. Just a stylist who listens, a result you love, and a plan to keep it looking great at home.</p>`,
+  `<div class="eyebrow">Our Consultation</div>
+        <h3>Great hair shouldn't only look good <em>in the chair.</em></h3>
+        <p>Every appointment starts with a real conversation. We'll ask about your routine at home and how much time you want to spend styling each morning. We'll also give you an honest take on your inspiration photos and how they'll work with your hair's natural texture. The result is a look you'll love just as much at home as you did in the salon.</p>`
+);
+swap(`class="btn">Book with a Stylist <span class="arr">→</span></a>`, `class="btn">Book Your Consultation <span class="arr">→</span></a>`);
+
+// Bios: her own wording from Bios.docx, trimmed for the cards. No L'ANZA anywhere: Sue's background
+// is framed as training the educators for a major hair care company, brand unnamed.
+swap(
+  `<p>A former L'ANZA educator who trained stylists up and down the East Coast. Sue loves mentoring the team and the long-time clients she has cared for over the years.</p>`,
+  `<p>Sue brings 40 years behind the chair and a passion for mentoring her team. She spent many years as an education manager for a major hair care company, training the educators who taught stylists across the East Coast.</p>`
+);
+swap(
+  `<p>The daughter of a lifelong stylist, Leah turned her passion for hair into salon ownership. She leads the team with continued education and room to create.</p>`,
+  `<p>Leah has been making clients feel beautiful since 2013. The daughter of a lifelong stylist, she turned her passion for hair into salon ownership and leads her stylists with continued education, creativity and growth.</p>`
+);
+swap(
+  `<p>Known for polished blowouts that show off her color and cutting work. Amanda followed her dream into hair in her 30s and has never stopped refining her craft.</p>`,
+  `<p>Amanda has been in the beauty industry for almost 20 years. She loves creating polished blowouts that showcase her color and haircutting work while helping her clients feel their best.</p>`
+);
+swap(
+  `<p>Inspired by watching her grandma give perms, Darcy has spent almost 30 years creating custom cuts and styles that are unique to each client.</p>`,
+  `<p>Darcy grew up watching her grandma give perms, which sparked her own journey into hairstyling. For almost 30 years she has loved creating custom cuts and styles unique to each client.</p>`
+);
+swap(
+  `<p>A curly girl herself, Marianna helps clients embrace their natural curls, and loves vivid color and one-of-a-kind looks.</p>`,
+  `<p>Marianna has been creating hair magic since 2023. A curly girl herself, she loves helping clients embrace their natural curls and tapping into her creative side with vivid color.</p>`
+);
+swap(
+  `<div><b>L'ANZA roots</b>Sue spent years as a L'ANZA educator</div>`,
+  `<div><b>Educator roots</b>Sue trained the educators for a major hair care company</div>`
+);
+if (/ANZA/i.test(body)) throw new Error("L'ANZA still mentioned");
+
+// Hours: Tuesday is now by appointment only; Sunday and Monday stay closed
+swap(
+  `Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</div>`,
+  `Tue by appointment · Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</div>`
+);
+swap(
+  `<p>Wednesday and Thursday 10 AM to 8 PM, Friday 9 AM to 5 PM, and Saturday 9 AM to 3 PM. We are closed Sunday, Monday and Tuesday.</p>`,
+  `<p>Wednesday and Thursday 10 AM to 8 PM, Friday 9 AM to 5 PM, and Saturday 9 AM to 3 PM. Tuesday is by appointment only, and we are closed Sunday and Monday.</p>`
+);
+swap(
+  `<tr class="closed"><td>Monday – Tuesday</td><td>Closed</td></tr>`,
+  `<tr class="closed"><td>Monday</td><td>Closed</td></tr>
+              <tr><td>Tuesday</td><td>By appointment only</td></tr>`
+);
+swap(
+  `<li>Wed–Thu 10–8</li><li>Fri 9–5 · Sat 9–3</li>`,
+  `<li>Tue by appointment</li><li>Wed–Thu 10–8</li><li>Fri 9–5 · Sat 9–3</li>`
+);
+if (/closed Sunday, Monday and Tuesday|Monday – Tuesday/.test(body)) throw new Error('Old hours left');
+
 if (/href="#"/.test(body)) throw new Error('Dead href="#" left: ' + body.match(/.{60}href="#".{60}/)[0]);
 
 const extraCss = `
@@ -139,6 +232,11 @@ const extraCss = `
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
   .menu .visual img{object-position:50% 35%;}
+  .svc-grid{grid-template-columns:repeat(3,1fr);}
+  .svc ul{margin-top:24px;padding-top:18px;border-top:1px solid var(--line-dark);}
+  .svc li{padding:7px 0;}
+  @media (max-width:1180px){ .svc-grid{grid-template-columns:repeat(3,1fr);gap:16px;} .svc{padding:40px 26px 34px;} }
+  @media (max-width:900px){ .svc-grid{grid-template-columns:1fr;} }
   .book-bar .field.pick{cursor:pointer;transition:background .2s;}
   .book-bar .field.pick:hover,.book-bar .field.pick:focus-within{background:var(--ivory);}
   .book-bar .field .val{position:relative;}
