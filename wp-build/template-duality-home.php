@@ -27,11 +27,12 @@ add_action('wp_enqueue_scripts', function () {
 		}
 	}
 
-	$dir = get_stylesheet_directory_uri() . '/duality-home';
-	$ver = '1.0.0';
-	wp_enqueue_style('duality-home-fonts', $dir . '/fonts/local.css', [], $ver);
-	wp_enqueue_style('duality-home', $dir . '/home.css', ['duality-home-fonts'], $ver);
-	wp_enqueue_script('duality-home', $dir . '/home.js', [], $ver, true);
+	$dir  = get_stylesheet_directory_uri() . '/duality-home';
+	$path = get_stylesheet_directory() . '/duality-home';
+	// File modification times as versions, so browsers pick up edits without a manual bump.
+	wp_enqueue_style('duality-home-fonts', $dir . '/fonts/local.css', [], (string) filemtime($path . '/fonts/local.css'));
+	wp_enqueue_style('duality-home', $dir . '/home.css', ['duality-home-fonts'], (string) filemtime($path . '/home.css'));
+	wp_enqueue_script('duality-home', $dir . '/home.js', [], (string) filemtime($path . '/home.js'), true);
 }, 999);
 
 // The Salon theme prints option-based CSS/JS (body backgrounds, fonts, colors) for its own
