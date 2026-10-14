@@ -262,6 +262,12 @@ swap(
 );
 if (/undivided/.test(body)) throw new Error('"undivided attention" still on page');
 
+// Darcy's photo (sent by the salon via Sandra, Oct 2026) replaces the placeholder
+swap(
+  `<div class="pic soon"><svg width="96" height="96" style="color:var(--brass-lt)"><use href="#emblem"/></svg>Photo coming soon</div>`,
+  `<div class="pic"><img src="img/darcy.jpg" alt="Darcy Ragione, stylist at Duality Salon" loading="lazy"><span class="tag">30 years</span></div>`
+);
+
 // ---------- Price menu: "Duality Salon Menu 9-2026.docx" (client's updated list) ----------
 // Service names and prices exactly as the salon lists them; tab order follows their document.
 const MENU = [
