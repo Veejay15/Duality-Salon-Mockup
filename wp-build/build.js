@@ -97,7 +97,8 @@ const extraCss = `
   .form .wpcf7{margin:0;}
   .form .wpcf7-form-control-wrap{display:block;}
   .form .f input,.form .f select,.form .f textarea{width:100%;}
-  .form input.wpcf7-submit{width:100%;margin-top:22px;cursor:pointer;font-family:var(--sans);}
+  .form input.wpcf7-submit{width:100%;margin-top:22px;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.2em;text-transform:uppercase;padding:18px 34px;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:background .25s,border-color .25s;}
+  .form input.wpcf7-submit:hover{background:var(--brass);border-color:var(--brass);}
   .form .wpcf7-spinner{display:block;margin:12px auto 0;}
   .form .wpcf7-not-valid-tip{font-size:12.5px;color:#a3332b;margin-top:6px;}
   .form .wpcf7 form .wpcf7-response-output{margin:18px 0 0;padding:12px 16px;font-size:14px;border:1px solid var(--brass-lt);background:var(--white);}
