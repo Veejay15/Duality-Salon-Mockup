@@ -262,6 +262,13 @@ swap(
 );
 if (/undivided/.test(body)) throw new Error('"undivided attention" still on page');
 
+// Logo update (Oct 2026): the emblem's "D" takes the storefront sign blue (#3B7FD9, sampled from
+// "Duality Salon Front Sign.png"). The faint price-menu watermark stays tone-on-tone.
+swap(
+  `font-size="56" font-weight="500" text-anchor="middle" fill="currentColor">D</text>`,
+  `font-size="56" font-weight="500" text-anchor="middle" style="fill:var(--d-fill,currentColor)">D</text>`
+);
+
 // Darcy's photo (sent by the salon via Sandra, Oct 2026) replaces the placeholder
 swap(
   `<div class="pic soon"><svg width="96" height="96" style="color:var(--brass-lt)"><use href="#emblem"/></svg>Photo coming soon</div>`,
@@ -359,6 +366,8 @@ const extraCss = `
   /* ---------- WordPress build additions ---------- */
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
+  :root{--sign-blue:#3B7FD9;--d-fill:var(--sign-blue);}
+  .menu .ghost-d{--d-fill:currentColor;}
   .menu .visual img{object-position:50% 35%;}
   .svc-grid{grid-template-columns:repeat(3,1fr);}
   .svc ul{margin-top:24px;padding-top:18px;border-top:1px solid var(--line-dark);}
