@@ -360,6 +360,17 @@ for (const gone of ['Balayage', 'Root and Scoot', 'Face Framing', 'Clipper', 'Co
   if (body.includes(gone)) throw new Error('Old menu item still on page: ' + gone);
 }
 
+// ---------- No bridal (Oct 2026): "The client doesn't want any focus on bridal" ----------
+swap(
+  `Questions about a service or a bridal party?`,
+  `Questions about color, curly cuts or any of our services?`
+);
+body = body.replace(/\s*<details>\s*<summary>Do you do bridal and prom hair\?<\/summary>[\s\S]*?<\/details>/, '');
+swap(`<option value="occasion">Bridal &amp; Special Occasion</option>`, ``);
+swap(`<li><a href="#services">Bridal &amp; Formal Styles</a></li>`, ``);
+js = js.replace(`finishing: '', occasion: '' }`, `finishing: '' }`);
+if (/bridal/i.test(body) || /occasion:/.test(js)) throw new Error('Bridal still mentioned');
+
 if (/href="#"/.test(body)) throw new Error('Dead href="#" left: ' + body.match(/.{60}href="#".{60}/)[0]);
 
 const extraCss = `
