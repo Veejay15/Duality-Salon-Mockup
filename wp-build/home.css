@@ -463,7 +463,8 @@
   /* ---------- WordPress build additions ---------- */
   /* WordPress adds width/height attributes to content images; let CSS sizing (aspect-ratio, height:100%) win */
   img{height:auto;}
-  :root{--sign-blue:#3B7FD9;--d-fill:var(--sign-blue);}
+  /* Oct 19: client asked for a more silvery blue, between the storefront sign (#3B7FD9) and V2B grey (#939FA9) */
+  :root{--sign-blue:#678FC1;--d-fill:var(--sign-blue);}
   .menu .ghost-d{--d-fill:currentColor;}
   .menu .visual img{object-position:50% 35%;}
   .svc-grid{grid-template-columns:repeat(3,1fr);}
