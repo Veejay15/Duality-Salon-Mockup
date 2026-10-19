@@ -181,7 +181,7 @@ swap(`class="btn">Book with a Stylist <span class="arr">→</span></a>`, `class=
 // is framed as training the educators for a major hair care company, brand unnamed.
 swap(
   `<p>A former L'ANZA educator who trained stylists up and down the East Coast. Sue loves mentoring the team and the long-time clients she has cared for over the years.</p>`,
-  `<p>Sue brings 40 years behind the chair and a passion for mentoring her team. She spent many years as an education manager for a major hair care company, training the educators who taught stylists across the East Coast.</p>`
+  `<p>Sue brings 40 years behind the chair and a passion for mentoring her team. She spent many years as an education manager for a major hair care company, training the educators who taught stylists across the United States and Canada.</p>`
 );
 swap(
   `<p>The daughter of a lifelong stylist, Leah turned her passion for hair into salon ownership. She leads the team with continued education and room to create.</p>`,
