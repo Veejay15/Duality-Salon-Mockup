@@ -161,9 +161,11 @@ function dh_clean_content($post) {
 		$inner = $m[2];
 		$text  = html_entity_decode(wp_strip_all_tags($inner), ENT_QUOTES, 'UTF-8');
 		$text  = trim(preg_replace('/\s+/u', ' ', str_replace(["\xC2\xA0", '&nbsp;'], ' ', $text)));
-		$is_sentence = mb_strlen($text) > 90
+		$short       = mb_strlen($text) <= 90;
+		$numbered    = $short && preg_match('/^\d+[).]\s/u', $text); // "1) Always use a heat protectant." is a tip title
+		$is_sentence = !$numbered && (!$short
 			|| preg_match('/[.!]["\x{201D}\x{2019})]*$/u', $text)
-			|| preg_match('/[.!?]\s+\p{Lu}/u', $text);
+			|| preg_match('/[.!?]\s+\p{Lu}/u', $text));
 		return $is_sentence ? '<p>' . $inner . '</p>' : '<h3>' . $inner . '</h3>';
 	}, $html);
 	// Bold wrapped around an entire paragraph or heading adds nothing; drop it.
