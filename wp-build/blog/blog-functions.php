@@ -162,7 +162,7 @@ function dh_clean_content($post) {
 		$text  = html_entity_decode(wp_strip_all_tags($inner), ENT_QUOTES, 'UTF-8');
 		$text  = trim(preg_replace('/\s+/u', ' ', str_replace(["\xC2\xA0", '&nbsp;'], ' ', $text)));
 		$short       = mb_strlen($text) <= 90;
-		$numbered    = $short && preg_match('/^\d+[).]\s/u', $text); // "1) Always use a heat protectant." is a tip title
+		$numbered    = mb_strlen($text) <= 120 && preg_match('/^\d+[).]\s/u', $text); // "1) Always use a heat protectant." is a tip title
 		$is_sentence = !$numbered && (!$short
 			|| preg_match('/[.!]["\x{201D}\x{2019})]*$/u', $text)
 			|| preg_match('/[.!?]\s+\p{Lu}/u', $text));
