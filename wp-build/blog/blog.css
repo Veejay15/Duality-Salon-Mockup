@@ -34,7 +34,8 @@
 /* feature (newest post on page 1) */
 .post-card.is-feature{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:28px;}
 .post-card.is-feature:hover{transform:none;}
-.post-card.is-feature .post-card__img{aspect-ratio:auto;min-height:420px;}
+.post-card.is-feature .post-card__img{position:relative;aspect-ratio:auto;min-height:460px;}
+.post-card.is-feature .post-card__img img{position:absolute;inset:0;}
 .post-card.is-feature .post-card__body{justify-content:center;padding:48px 52px;}
 .post-card.is-feature h3{font-size:clamp(32px,3vw,42px);}
 .post-card.is-feature p{flex:0;font-size:16.5px;}
