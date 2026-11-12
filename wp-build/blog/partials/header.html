@@ -1,0 +1,50 @@
+<!-- Reusable brand emblem, redrawn from the salon's reception-desk sign. Final build uses the client's vector logo file. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="arcTop" d="M 22,60 A 38,38 0 0 1 98,60"/>
+    <path id="arcBot" d="M 20,60 A 40,40 0 0 0 100,60"/>
+  </defs>
+  <symbol id="emblem" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <circle cx="60" cy="60" r="49.5" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <text font-family="Jost,Arial,sans-serif" font-size="10.5" font-weight="500" letter-spacing="3.2" fill="currentColor"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">DUALITY</textPath></text>
+    <text font-family="Jost,Arial,sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.6" fill="currentColor" dy="7"><textPath href="#arcBot" startOffset="50%" text-anchor="middle" side="right">EST. 2020</textPath></text>
+    <text x="60" y="80" font-family="'Cormorant Garamond',Georgia,serif" font-size="56" font-weight="500" text-anchor="middle" style="fill:var(--d-fill,currentColor)">D</text>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#8C6D43" stroke-width="1"/><path d="M6.5 11.3l3 3 6-6.3" fill="none" stroke="#8C6D43" stroke-width="1.3"/></symbol>
+</svg>
+
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="left">1606 Hopkins Road, <b>Williamsville, NY 14221</b><span class="sep">|</span>Tue by appointment · Wed–Thu 10–8 · Fri 9–5 · Sat 9–3</div>
+    <div class="right">
+      <a href="https://www.instagram.com/dualitysalonbuffalo" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/DualitySalonBuffalo" target="_blank" rel="noopener">Facebook</a>
+      <a href="tel:+17169988528"><b>(716) 998-8528</b></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="{{SITE}}" class="brand" aria-label="Duality Salon home">
+      <svg width="58" height="58" class="emblem" style="color:var(--ink)"><use href="#emblem"/></svg>
+      <span class="word"><b>DUALITY</b><span>Salon · Williamsville</span></span>
+    </a>
+    <nav class="links">
+      <a href="{{SITE}}services/">Services</a>
+      <a href="{{SITE}}services/">Price Menu</a>
+      <a href="{{SITE}}about/">Our Team</a>
+      <a href="{{SITE}}our-gallery/">Gallery</a>
+      <a href="{{SITE}}contact/">Contact</a>
+    </nav>
+    <div class="cta">
+      <a href="tel:+17169988528" class="phone"><small>Call the salon</small><b>(716) 998-8528</b></a>
+      <a href="https://login.meevo.com/DualitySalonBuffalo/ob?locationId=105068" target="_blank" rel="noopener" class="btn">Book Online</a>
+      <button class="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
