@@ -155,6 +155,20 @@ function dh_clean_content($post) {
 		$text = str_replace(["\xC2\xA0", '&nbsp;', '&#160;'], ' ', wp_strip_all_tags($m[2]));
 		return trim($text) === '' ? '' : $m[0];
 	}, $html);
+	// Older posts tag whole paragraphs as headings (H1-H5) for size. Sentences become paragraphs;
+	// genuine short headings (labels, questions, "1) Tip name") share one subheading style.
+	$html = preg_replace_callback('#<(h[2-6])\b[^>]*>(.*?)</\1>#is', function ($m) {
+		$inner = $m[2];
+		$text  = html_entity_decode(wp_strip_all_tags($inner), ENT_QUOTES, 'UTF-8');
+		$text  = trim(preg_replace('/\s+/u', ' ', str_replace(["\xC2\xA0", '&nbsp;'], ' ', $text)));
+		$is_sentence = mb_strlen($text) > 90
+			|| preg_match('/[.!]["\x{201D}\x{2019})]*$/u', $text)
+			|| preg_match('/[.!?]\s+\p{Lu}/u', $text);
+		return $is_sentence ? '<p>' . $inner . '</p>' : '<h3>' . $inner . '</h3>';
+	}, $html);
+	// Bold wrapped around an entire paragraph or heading adds nothing; drop it.
+	$html = preg_replace('#<(p|h3)>\s*<(b|strong)>((?:(?!</?(?:b|strong)\b).)*)</\2>\s*</\1>#is', '<$1>$3</$1>', $html);
+
 	$title = preg_quote(wp_strip_all_tags(get_the_title($post)), '#');
 	$html  = preg_replace('#^\s*<p>\s*<(b|strong)>\s*' . $title . '\s*</\1>\s*</p>#iu', '', $html, 1);
 	return $html;

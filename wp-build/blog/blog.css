@@ -61,15 +61,19 @@
 .post-cover img{width:100%;max-height:620px;object-fit:cover;box-shadow:0 30px 60px rgba(22,20,18,.22);}
 
 .post-body{width:min(760px,100% - 48px);margin:0 auto;padding:80px 0 110px;}
-.entry{font-size:18.5px;line-height:1.8;color:#3d3832;}
+/* One body style and one subheading style: older posts' mixed heading sizes are normalized
+   in dh_clean_content(), and every inline size, font and weight from pasted Word text is overridden. */
+.entry{font-family:var(--sans);font-size:18px;font-weight:400;line-height:1.8;color:#3d3832;}
 .entry > *{margin:0;}
 .entry > * + *{margin-top:1.15em;}
-.entry h2{font-size:clamp(28px,2.6vw,36px);line-height:1.2;color:var(--ink);margin-top:1.7em;}
-.entry h3{font-size:28px;line-height:1.25;color:var(--ink);margin-top:1.6em;}
-.entry h4,.entry h5,.entry h6{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.35;color:var(--ink);margin-top:1.5em;}
-.entry > h2:first-child,.entry > h3:first-child,.entry > h4:first-child{margin-top:0;}
-.entry h2 + p,.entry h3 + p,.entry h4 + p,.entry h5 + p{margin-top:.6em;}
-.entry strong,.entry b{font-weight:500;color:var(--ink);}
+.entry p,.entry li,.entry p *,.entry li *{font-family:var(--sans) !important;font-size:inherit !important;font-style:normal;line-height:inherit;}
+.entry h2,.entry h3,.entry h4,.entry h5,.entry h6{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.25;letter-spacing:0;color:var(--ink);margin-top:1.7em;}
+.entry h2 *,.entry h3 *,.entry h4 *,.entry h5 *,.entry h6 *{font:inherit !important;color:inherit;}
+.entry > :is(h2,h3,h4,h5,h6):first-child{margin-top:0;}
+.entry :is(h2,h3,h4,h5,h6) + :is(p,ul,ol){margin-top:.55em;}
+.entry strong,.entry b{font-weight:500 !important;color:var(--ink);}
+.entry em,.entry i{font-style:italic;}
+.entry p em,.entry p i,.entry li em,.entry li i{font-style:italic !important;}
 .entry a{color:var(--brass);border-bottom:1px solid var(--brass-lt);transition:color .2s,border-color .2s;}
 .entry a:hover{color:var(--ink);border-color:var(--ink);}
 .entry ul,.entry ol{padding-left:1.3em;}
