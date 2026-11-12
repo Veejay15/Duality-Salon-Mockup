@@ -147,7 +147,14 @@ function dh_clean_content($post) {
 	$html = apply_filters('the_content', $post->post_content);
 	$html = preg_replace('#<(/?)h1\b#i', '<$1h2', $html);
 	$html = preg_replace('#<span data-ccp-props="[^"]*">\s*</span>#i', '', $html);
-	$html = preg_replace('#<p>(?:\s|&nbsp;|\xC2\xA0|<br\s*/?>)*</p>#i', '', $html);
+	// Paragraphs and headings with no visible text (spacers, even when wrapped in Word's spans)
+	$html = preg_replace_callback('#<(p|h[2-6])\b[^>]*>(.*?)</\1>#is', function ($m) {
+		if (preg_match('#<(img|iframe|video|svg)\b#i', $m[2])) {
+			return $m[0];
+		}
+		$text = str_replace(["\xC2\xA0", '&nbsp;', '&#160;'], ' ', wp_strip_all_tags($m[2]));
+		return trim($text) === '' ? '' : $m[0];
+	}, $html);
 	$title = preg_quote(wp_strip_all_tags(get_the_title($post)), '#');
 	$html  = preg_replace('#^\s*<p>\s*<(b|strong)>\s*' . $title . '\s*</\1>\s*</p>#iu', '', $html, 1);
 	return $html;
