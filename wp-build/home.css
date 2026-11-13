@@ -467,6 +467,8 @@
   :root{--sign-blue:#678FC1;--d-fill:var(--sign-blue);}
   .menu .ghost-d{--d-fill:currentColor;}
   .menu .visual img{object-position:50% 35%;}
+  /* Nov 2026: map shows Google's default colors (the grayscale filter made it look washed out) */
+  .area .mapbox iframe{filter:none;}
   .svc-grid{grid-template-columns:repeat(3,1fr);}
   .svc ul{margin-top:24px;padding-top:18px;border-top:1px solid var(--line-dark);}
   .svc li{padding:7px 0;}
